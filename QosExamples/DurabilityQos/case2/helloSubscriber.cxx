@@ -24,6 +24,7 @@
 #include <fastdds/dds/subscriber/SampleInfo.hpp>
 #include <fastdds/dds/subscriber/Subscriber.hpp>
 #include <fastdds/dds/subscriber/qos/DataReaderQos.hpp>
+#include <fastdds/dds/core/LoanableSequence.hpp>
 
 #include "helloSubscriber.h"
 #include "helloPubSubTypes.h"
@@ -61,6 +62,7 @@ bool helloSubscriber::init()
     //CREATE THE PARTICIPANT
     DomainParticipantQos pqos;
     pqos.name("Participant_sub");
+        
     participant_ = DomainParticipantFactory::get_instance()->create_participant(0, pqos);
     if (participant_ == nullptr)
     {
@@ -90,9 +92,10 @@ bool helloSubscriber::init()
     //CREATE THE READER
     DataReaderQos rqos = DATAREADER_QOS_DEFAULT;
     rqos.reliability().kind = RELIABLE_RELIABILITY_QOS;
-    rqos.deadline().period = 20.0* 1e-3;
-    // rqos.time_based_filter().minimum_separation = 10.0* 1e-3;
-    // rqos.history().depth = 5;
+    rqos.durability().kind = TRANSIENT_LOCAL_DURABILITY_QOS;
+ 
+
+
     reader_ = subscriber_->create_datareader(topic_, rqos, &listener_);
     if (reader_ == nullptr)
     {
@@ -141,31 +144,87 @@ void helloSubscriber::SubListener::on_requested_incompatible_qos(
     std::cout << "on_requested_incompatible_qos: last_policy_id="  << status.last_policy_id  << std::endl;
 }
 
+void helloSubscriber::SubListener::on_sample_lost(
+    eprosima::fastdds::dds::DataReader* reader, 
+    const eprosima::fastdds::dds::SampleLostStatus& status) 
+{
+    std::cout << "on_sample_lost" << std::endl;
+}
+
+void helloSubscriber::SubListener::on_sample_rejected(
+    eprosima::fastdds::dds::DataReader* reader, 
+    const eprosima::fastdds::dds::SampleRejectedStatus& status)
+{
+    std::cout << "on_sample_rejected" << std::endl;
+}
+
+void helloSubscriber::SubListener::on_liveliness_changed(
+    eprosima::fastdds::dds::DataReader* reader, 
+const eprosima::fastdds::dds::LivelinessChangedStatus& status) 
+{
+    std::cout << "on_liveliness_changed" << std::endl;
+}
 
 void helloSubscriber::SubListener::on_data_available(
         DataReader* reader)
 {
-    // Take data
-    HelloMsg st;
-    SampleInfo info;
 
-    if (reader->take_next_sample(&st, &info) == ReturnCode_t::RETCODE_OK)
+    FASTDDS_CONST_SEQUENCE(HelloMsgSeq, HelloMsg);
+
+    // Take data
+    HelloMsgSeq data_seq;
+    SampleInfoSeq info_seq;
+
+    while (ReturnCode_t::RETCODE_OK == reader->take(data_seq, info_seq))
     {
-        if (info.valid_data)
+        for (LoanableCollection::size_type i = 0; i < info_seq.length(); ++i)
         {
-            // Print your structure data here.
-            // ++samples;
-            auto now = std::chrono::system_clock::now();
-            auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(now.time_since_epoch()).count();
-            std::cout << "Sample received, index=" << st.index()  << ", now_ms=" << ms <<  std::endl; 
-            // std::cout << "Sample received, count=" << samples << std::endl;
+            if (info_seq[i].valid_data)
+            {
+                // Print your structure data here.
+                const HelloMsg& st = data_seq[i];
+
+                auto now = std::chrono::system_clock::now();
+                auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(now.time_since_epoch()).count();
+                std::cout << "Sample received, index=" << st.index()  << ", time_stamp=" <<  st.time_stamp()
+                     << ", now_ms=" << ms <<  std::endl; 
+            }
         }
+        reader->return_loan(data_seq, info_seq);
     }
 }
 
 void helloSubscriber::run()
 {
     std::cout << "Waiting for Data, press Enter to stop the DataReader. " << std::endl;
+
+
+    // FASTDDS_CONST_SEQUENCE(HelloMsgSeq, HelloMsg);
+
+    // // Take data
+    // std::cout << "take data form history. " << std::endl;
+    // HelloMsgSeq data_seq;
+    // SampleInfoSeq info_seq;
+
+    // while (ReturnCode_t::RETCODE_OK == reader_->take(data_seq, info_seq))
+    // {
+    //     for (LoanableCollection::size_type i = 0; i < info_seq.length(); ++i)
+    //     {
+    //         if (info_seq[i].valid_data)
+    //         {
+    //             // Print your structure data here.
+    //             const HelloMsg& st = data_seq[i];
+
+    //             auto now = std::chrono::system_clock::now();
+    //             auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(now.time_since_epoch()).count();
+    //             std::cout << "Sample received, index=" << st.index()  << ", now_ms=" << ms <<  std::endl; 
+    //         }
+    //     }
+    //     reader_->return_loan(data_seq, info_seq);
+    // }
+
+
     std::cin.ignore();
     std::cout << "Shutting down the Subscriber." << std::endl;
+
 }

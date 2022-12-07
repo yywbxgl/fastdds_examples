@@ -67,6 +67,10 @@ bool helloPublisher::init()
     //CREATE THE PARTICIPANT
     DomainParticipantQos pqos;
     pqos.name("Participant_pub");
+    // Configure persistence service plugin for DomainParticipant
+    pqos.properties().properties().emplace_back("dds.persistence.plugin", "builtin.SQLITE3");
+    pqos.properties().properties().emplace_back("dds.persistence.sqlite3.filename", "persistence_sun.db");
+        
     participant_ = DomainParticipantFactory::get_instance()->create_participant(0, pqos);
     if (participant_ == nullptr)
     {
@@ -93,11 +97,20 @@ bool helloPublisher::init()
         return false;
     }
 
-    // CREATE THE WRITER
+
     DataWriterQos wqos;
     wqos.reliability().kind = RELIABLE_RELIABILITY_QOS;
-    wqos.deadline().period = 20.0* 1e-3;
+    wqos.durability().kind = TRANSIENT_DURABILITY_QOS;
+    wqos.properties().properties().emplace_back("dds.persistence.guid",
+        "77.72.69.74.65.72.5f.70.65.72.73.5f|67.75.69.64");
+    wqos.history().kind = KEEP_LAST_HISTORY_QOS;
+    wqos.history().depth = 100;
+    wqos.resource_limits().max_samples   = 5000;
+    wqos.resource_limits().max_instances   = 10;
+    wqos.resource_limits().max_samples_per_instance = 400;
+
     writer_ = publisher_->create_datawriter(topic_, wqos, &listener_);
+    std::cout << "--- writer giud =" << writer_->guid();
     if (writer_ == nullptr)
     {
         return false;
@@ -152,10 +165,10 @@ void helloPublisher::run()
 {
     std::cout << "HelloMsg DataWriter waiting for DataReaders." << std::endl;
 
-    while (listener_.matched == 0)
-    {
-        std::this_thread::sleep_for(std::chrono::milliseconds(250)); // Sleep 250 ms
-    }
+    // while (listener_.matched == 0)
+    // {
+    //     std::this_thread::sleep_for(std::chrono::milliseconds(250)); // Sleep 250 ms
+    // }
 
     // Publication code
 
@@ -168,19 +181,16 @@ void helloPublisher::run()
 
         // write data
         msgsent ++;
-        st.index(msgsent);
+     
         auto now = std::chrono::system_clock::now();
         auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(now.time_since_epoch()).count();
-        std::cout << "Sending sample, index=" << st.index()  << ", now_ms=" << ms <<  std::endl; 
+        std::cout << "Sending sample, index=" << st.index()  << ", time_stamp=" << ms <<  std::endl; 
 
+        st.index(msgsent);
+        st.time_stamp(ms);
         writer_->write(&st);
 
-        // sleep
-        if (msgsent%100 == 0) {
-            std::this_thread::sleep_for(std::chrono::milliseconds(100));
-        } else {
-            std::this_thread::sleep_for(std::chrono::milliseconds(14));
-        }
+        std::this_thread::sleep_for(std::chrono::milliseconds(500));
     }
 
 }

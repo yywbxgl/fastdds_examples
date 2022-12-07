@@ -93,10 +93,16 @@ bool helloPublisher::init()
         return false;
     }
 
-    // CREATE THE WRITER
+
     DataWriterQos wqos;
     wqos.reliability().kind = RELIABLE_RELIABILITY_QOS;
-    wqos.deadline().period = 20.0* 1e-3;
+    wqos.durability().kind = TRANSIENT_LOCAL_DURABILITY_QOS;
+    wqos.history().kind = KEEP_LAST_HISTORY_QOS;
+    wqos.history().depth = 100;
+    wqos.resource_limits().max_samples   = 5000;
+    wqos.resource_limits().max_samples_per_instance = 400;
+
+
     writer_ = publisher_->create_datawriter(topic_, wqos, &listener_);
     if (writer_ == nullptr)
     {
@@ -152,10 +158,10 @@ void helloPublisher::run()
 {
     std::cout << "HelloMsg DataWriter waiting for DataReaders." << std::endl;
 
-    while (listener_.matched == 0)
-    {
-        std::this_thread::sleep_for(std::chrono::milliseconds(250)); // Sleep 250 ms
-    }
+    // while (listener_.matched == 0)
+    // {
+    //     std::this_thread::sleep_for(std::chrono::milliseconds(250)); // Sleep 250 ms
+    // }
 
     // Publication code
 
@@ -175,12 +181,7 @@ void helloPublisher::run()
 
         writer_->write(&st);
 
-        // sleep
-        if (msgsent%100 == 0) {
-            std::this_thread::sleep_for(std::chrono::milliseconds(100));
-        } else {
-            std::this_thread::sleep_for(std::chrono::milliseconds(14));
-        }
+        std::this_thread::sleep_for(std::chrono::milliseconds(500));
     }
 
 }

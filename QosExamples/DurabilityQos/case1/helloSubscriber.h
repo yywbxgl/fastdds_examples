@@ -70,6 +70,18 @@ private:
          void on_requested_incompatible_qos(
             eprosima::fastdds::dds::DataReader* reader,
             const eprosima::fastdds::dds::RequestedIncompatibleQosStatus& status) override;
+
+        void on_sample_lost(
+            eprosima::fastdds::dds::DataReader* reader, 
+            const eprosima::fastdds::dds::SampleLostStatus& status) override;
+
+        void on_sample_rejected(
+            eprosima::fastdds::dds::DataReader* reader, 
+            const eprosima::fastdds::dds::SampleRejectedStatus& status) override;
+
+        void on_liveliness_changed(
+            eprosima::fastdds::dds::DataReader* reader, 
+            const eprosima::fastdds::dds::LivelinessChangedStatus& status) override;
   
 
         int matched = 0;

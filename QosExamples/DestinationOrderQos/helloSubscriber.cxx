@@ -90,9 +90,7 @@ bool helloSubscriber::init()
     //CREATE THE READER
     DataReaderQos rqos = DATAREADER_QOS_DEFAULT;
     rqos.reliability().kind = RELIABLE_RELIABILITY_QOS;
-    rqos.deadline().period = 20.0* 1e-3;
-    // rqos.time_based_filter().minimum_separation = 10.0* 1e-3;
-    // rqos.history().depth = 5;
+    rqos.destination_order().kind = BY_RECEPTION_TIMESTAMP_DESTINATIONORDER_QOS;
     reader_ = subscriber_->create_datareader(topic_, rqos, &listener_);
     if (reader_ == nullptr)
     {

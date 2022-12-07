@@ -96,7 +96,9 @@ bool helloPublisher::init()
     // CREATE THE WRITER
     DataWriterQos wqos;
     wqos.reliability().kind = RELIABLE_RELIABILITY_QOS;
-    wqos.deadline().period = 20.0* 1e-3;
+    wqos.destination_order().kind = BY_RECEPTION_TIMESTAMP_DESTINATIONORDER_QOS;
+    // wqos.destination_order().kind = BY_SOURCE_TIMESTAMP_DESTINATIONORDER_QOS;
+
     writer_ = publisher_->create_datawriter(topic_, wqos, &listener_);
     if (writer_ == nullptr)
     {
