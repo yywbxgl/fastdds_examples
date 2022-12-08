@@ -65,11 +65,15 @@ bool helloPublisher::init()
     /* Initialize data_ here */
 
     //CREATE THE PARTICIPANT
+    // DomainParticipantFactoryQos factory_qos;
+    // factory_qos.entity_factory().autoenable_created_entities = false;
+    // DomainParticipantFactory::get_instance()->set_qos(factory_qos);
+
     DomainParticipantQos pqos;
     pqos.name("Participant_pub");
     // Configure persistence service plugin for DomainParticipant
-    pqos.properties().properties().emplace_back("dds.persistence.plugin", "builtin.SQLITE3");
-    pqos.properties().properties().emplace_back("dds.persistence.sqlite3.filename", "persistence_sun.db");
+    // pqos.properties().properties().emplace_back("dds.persistence.plugin", "builtin.SQLITE3");
+    // pqos.properties().properties().emplace_back("dds.persistence.sqlite3.filename", "persistence_sun.db");
         
     participant_ = DomainParticipantFactory::get_instance()->create_participant(0, pqos);
     if (participant_ == nullptr)
@@ -100,14 +104,14 @@ bool helloPublisher::init()
 
     DataWriterQos wqos;
     wqos.reliability().kind = RELIABLE_RELIABILITY_QOS;
-    wqos.durability().kind = TRANSIENT_DURABILITY_QOS;
-    wqos.properties().properties().emplace_back("dds.persistence.guid",
-        "77.72.69.74.65.72.5f.70.65.72.73.5f|67.75.69.64");
-    wqos.history().kind = KEEP_LAST_HISTORY_QOS;
-    wqos.history().depth = 100;
-    wqos.resource_limits().max_samples   = 5000;
-    wqos.resource_limits().max_instances   = 10;
-    wqos.resource_limits().max_samples_per_instance = 400;
+    // wqos.durability().kind = TRANSIENT_DURABILITY_QOS;
+    // wqos.properties().properties().emplace_back("dds.persistence.guid",
+    //     "77.72.69.74.65.72.5f.70.65.72.73.5f|67.75.69.64");
+    // wqos.history().kind = KEEP_LAST_HISTORY_QOS;
+    // wqos.history().depth = 100;
+    // wqos.resource_limits().max_samples   = 5000;
+    // wqos.resource_limits().max_instances   = 10;
+    // wqos.resource_limits().max_samples_per_instance = 400;
 
     writer_ = publisher_->create_datawriter(topic_, wqos, &listener_);
     // std::cout << "--- writer giud =" << writer_->guid();

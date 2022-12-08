@@ -65,11 +65,15 @@ bool helloPublisher::init()
     /* Initialize data_ here */
 
     //CREATE THE PARTICIPANT
+    // DomainParticipantFactoryQos factory_qos;
+    // factory_qos.entity_factory().autoenable_created_entities = false;
+    // DomainParticipantFactory::get_instance()->set_qos(factory_qos);
+
     DomainParticipantQos pqos;
     pqos.name("Participant_pub");
     // Configure persistence service plugin for DomainParticipant
-    pqos.properties().properties().emplace_back("dds.persistence.plugin", "builtin.SQLITE3");
-    pqos.properties().properties().emplace_back("dds.persistence.sqlite3.filename", "persistence_sun.db");
+    // pqos.properties().properties().emplace_back("dds.persistence.plugin", "builtin.SQLITE3");
+    // pqos.properties().properties().emplace_back("dds.persistence.sqlite3.filename", "persistence_sun.db");
         
     participant_ = DomainParticipantFactory::get_instance()->create_participant(0, pqos);
     if (participant_ == nullptr)
@@ -81,11 +85,24 @@ bool helloPublisher::init()
     type_.register_type(participant_);
 
     //CREATE THE PUBLISHER
-    publisher_ = participant_->create_publisher(PUBLISHER_QOS_DEFAULT, nullptr);
+    // ----sun------
+    PublisherQos pub_qos;
+    std::vector<eprosima::fastrtps::rtps::octet> vec = 
+        pub_qos.group_data().data_vec(); // Getter function
+
+    std::string test_data = "ABCD1234EFG";
+    for (int i=0; i< test_data.size(); ++i) {
+        vec.push_back(test_data[i]);
+    }
+
+    pub_qos.group_data().data_vec(vec); // ？？
+
+    publisher_ = participant_->create_publisher(pub_qos, nullptr);
     if (publisher_ == nullptr)
     {
         return false;
     }
+    //--------end-----
 
     //CREATE THE TOPIC
     topic_ = participant_->create_topic(
@@ -100,14 +117,15 @@ bool helloPublisher::init()
 
     DataWriterQos wqos;
     wqos.reliability().kind = RELIABLE_RELIABILITY_QOS;
-    wqos.durability().kind = TRANSIENT_DURABILITY_QOS;
-    wqos.properties().properties().emplace_back("dds.persistence.guid",
-        "77.72.69.74.65.72.5f.70.65.72.73.5f|67.75.69.64");
-    wqos.history().kind = KEEP_LAST_HISTORY_QOS;
-    wqos.history().depth = 100;
-    wqos.resource_limits().max_samples   = 5000;
-    wqos.resource_limits().max_instances   = 10;
-    wqos.resource_limits().max_samples_per_instance = 400;
+    wqos.deadline().period = 1212 * 1e-3;
+    // wqos.durability().kind = TRANSIENT_DURABILITY_QOS;
+    // wqos.properties().properties().emplace_back("dds.persistence.guid",
+    //     "77.72.69.74.65.72.5f.70.65.72.73.5f|67.75.69.64");
+    // wqos.history().kind = KEEP_LAST_HISTORY_QOS;
+    // wqos.history().depth = 100;
+    // wqos.resource_limits().max_samples   = 5000;
+    // wqos.resource_limits().max_instances   = 10;
+    // wqos.resource_limits().max_samples_per_instance = 400;
 
     writer_ = publisher_->create_datawriter(topic_, wqos, &listener_);
     // std::cout << "--- writer giud =" << writer_->guid();

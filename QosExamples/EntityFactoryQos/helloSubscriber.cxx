@@ -60,6 +60,10 @@ helloSubscriber::~helloSubscriber()
 bool helloSubscriber::init()
 {
     //CREATE THE PARTICIPANT
+    DomainParticipantFactoryQos factory_qos;
+    factory_qos.entity_factory().autoenable_created_entities = false;
+    DomainParticipantFactory::get_instance()->set_qos(factory_qos);
+
     DomainParticipantQos pqos;
     pqos.name("Participant_sub");
         
@@ -92,7 +96,7 @@ bool helloSubscriber::init()
     //CREATE THE READER
     DataReaderQos rqos = DATAREADER_QOS_DEFAULT;
     rqos.reliability().kind = RELIABLE_RELIABILITY_QOS;
-    rqos.durability().kind = TRANSIENT_LOCAL_DURABILITY_QOS;
+    // rqos.durability().kind = TRANSIENT_LOCAL_DURABILITY_QOS;
 
 
 
@@ -196,35 +200,17 @@ void helloSubscriber::SubListener::on_data_available(
 
 void helloSubscriber::run()
 {
+    std::cout << "press Enter to enabel DomainParticipant" << std::endl;
+    std::cin.ignore();
+    participant_->enable();
+
+
+    std::cout << "press Enter to disable DomainParticipant" << std::endl;
+    std::cin.ignore();
+    reader_->close();
+
+
     std::cout << "Waiting for Data, press Enter to stop the DataReader. " << std::endl;
-
-
-    // FASTDDS_CONST_SEQUENCE(HelloMsgSeq, HelloMsg);
-
-    // // Take data
-    // std::cout << "take data form history. " << std::endl;
-    // HelloMsgSeq data_seq;
-    // SampleInfoSeq info_seq;
-
-    // while (ReturnCode_t::RETCODE_OK == reader_->take(data_seq, info_seq))
-    // {
-    //     for (LoanableCollection::size_type i = 0; i < info_seq.length(); ++i)
-    //     {
-    //         if (info_seq[i].valid_data)
-    //         {
-    //             // Print your structure data here.
-    //             const HelloMsg& st = data_seq[i];
-
-    //             auto now = std::chrono::system_clock::now();
-    //             auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(now.time_since_epoch()).count();
-    //             std::cout << "Sample received, index=" << st.index()  << ", now_ms=" << ms <<  std::endl; 
-    //         }
-    //     }
-    //     reader_->return_loan(data_seq, info_seq);
-    // }
-
-
     std::cin.ignore();
     std::cout << "Shutting down the Subscriber." << std::endl;
-
 }
