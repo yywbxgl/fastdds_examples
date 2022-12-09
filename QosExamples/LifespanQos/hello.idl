@@ -1,0 +1,8 @@
+struct HelloMsg
+{
+    @Key
+    unsigned short sensor_id;
+    unsigned long index;
+    long long time_stamp;
+    string<256> sensor_data;
+};
