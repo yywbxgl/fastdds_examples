@@ -60,7 +60,7 @@ helloPublisher::~helloPublisher()
     DomainParticipantFactory::get_instance()->delete_participant(participant_);
 }
 
-bool helloPublisher::init()
+bool helloPublisher::init(int domain_id, std::string part)
 {
     /* Initialize data_ here */
 
@@ -68,13 +68,16 @@ bool helloPublisher::init()
     // DomainParticipantFactoryQos factory_qos;
     // factory_qos.entity_factory().autoenable_created_entities = false;
     // DomainParticipantFactory::get_instance()->set_qos(factory_qos);
+    
+    // std::cout << "domain_id = " << domain_id << std::endl;
+    // std::cout << "Partition = " << part << std::endl;
+
 
     DomainParticipantQos pqos;
     pqos.name("Participant_pub");
     // Configure persistence service plugin for DomainParticipant
     // pqos.properties().properties().emplace_back("dds.persistence.plugin", "builtin.SQLITE3");
     // pqos.properties().properties().emplace_back("dds.persistence.sqlite3.filename", "persistence_sun.db");
-    pqos.wire_protocol().builtin.use_WriterLivelinessProtocol = true;   
     participant_ = DomainParticipantFactory::get_instance()->create_participant(0, pqos);
     if (participant_ == nullptr)
     {
@@ -86,6 +89,7 @@ bool helloPublisher::init()
 
     //CREATE THE PUBLISHER
     PublisherQos pub_qos;
+    // pub_qos.partition().push_back(part.c_str());
     publisher_ = participant_->create_publisher(pub_qos, nullptr);
     if (publisher_ == nullptr)
     {
@@ -105,13 +109,15 @@ bool helloPublisher::init()
 
 
     DataWriterQos wqos;
-    wqos.reliability().kind = RELIABLE_RELIABILITY_QOS;
-    wqos.durability().kind = TRANSIENT_LOCAL_DURABILITY_QOS;
+    wqos.reliability().kind = BEST_EFFORT_RELIABILITY_QOS;
+    wqos.durability().kind = VOLATILE_DURABILITY_QOS;
     wqos.history().kind = KEEP_LAST_HISTORY_QOS;
     wqos.history().depth = 100;
-    wqos.liveliness().kind = MANUAL_BY_PARTICIPANT_LIVELINESS_QOS;
-    wqos.liveliness().lease_duration = 200 * 1e-3; // ms
-    wqos.liveliness().announcement_period = 100 * 1e-3; //ms
+    // wqos.resource_limits().max_samples = 1000;
+    // wqos.resource_limits().max_instances = 1;
+    // wqos.resource_limits().max_samples_per_instance = 1000;
+
+
 
     writer_ = publisher_->create_datawriter(topic_, wqos, &listener_);
     // std::cout << "--- writer giud =" << writer_->guid();
@@ -119,6 +125,15 @@ bool helloPublisher::init()
     {
         return false;
     }
+
+    
+    // wqos.ownership_strength().value = 0;
+    // writer2_ = publisher_->create_datawriter(topic_, wqos, &listener_);
+    // // std::cout << "--- writer giud =" << writer_->guid();
+    // if (writer_ == nullptr)
+    // {
+    //     return false;
+    // }
 
     std::cout << "HelloMsg DataWriter created." << std::endl;
     return true;
@@ -191,6 +206,9 @@ void helloPublisher::run()
 
     int msgsent = 0;
     int cont= 0;
+
+    writer_->write(&st);
+
     while(1) {
 
         // write data
@@ -202,11 +220,13 @@ void helloPublisher::run()
 
         st.index(msgsent);
         st.time_stamp(ms);
+        st.sensor_id(1);
         writer_->write(&st);
+        // writer2_->write(&st);
 
         // sleep
         if (msgsent%100 == 0) {
-            std::this_thread::sleep_for(std::chrono::milliseconds(500));
+            // std::this_thread::sleep_for(std::chrono::milliseconds(500));
         } else {
             std::this_thread::sleep_for(std::chrono::milliseconds(100));
         }
