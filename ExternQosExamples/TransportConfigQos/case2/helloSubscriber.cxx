@@ -74,7 +74,7 @@ bool helloSubscriber::init()
     // participant_ = DomainParticipantFactory::get_instance()->create_participant(0, pqos, &listener_participant_, par_mask);
     
      // Explicit configuration of SharedMem transport
-    // pqos.transport().use_builtin_transports = false;
+    pqos.transport().use_builtin_transports = false;
 
 
     // auto udp_descriptor =std::make_shared<eprosima::fastdds::rtps::UDPv4TransportDescriptor>();
@@ -83,9 +83,9 @@ bool helloSubscriber::init()
     // udp_descriptor->receiveBufferSize = 9126;
     // pqos.transport().user_transports.push_back(udp_descriptor);
 
-    // auto sm_transport = std::make_shared<SharedMemTransportDescriptor>();
-    // sm_transport->segment_size(2 * 1024 * 1024);
-    // pqos.transport().user_transports.push_back(sm_transport);
+    auto sm_transport = std::make_shared<SharedMemTransportDescriptor>();
+    sm_transport->segment_size(2 * 1024 * 1024);
+    pqos.transport().user_transports.push_back(sm_transport);
     
     participant_ = DomainParticipantFactory::get_instance()->create_participant(0, pqos);
     if (participant_ == nullptr)
@@ -124,7 +124,7 @@ bool helloSubscriber::init()
     rqos.resource_limits().allocated_samples = 20;
     // rqos.resource_limits().max_instances   = 1;
     // rqos.resource_limits().max_samples_per_instance = 50;
-    // rqos.data_sharing().off();
+    rqos.data_sharing().off();
 
 
     reader_ = subscriber_->create_datareader(topic_, rqos, &listener_);

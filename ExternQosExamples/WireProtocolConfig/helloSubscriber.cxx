@@ -63,7 +63,7 @@ helloSubscriber::~helloSubscriber()
     DomainParticipantFactory::get_instance()->delete_participant(participant_);
 }
 
-bool helloSubscriber::init()
+bool helloSubscriber::init(int flag)
 {
     // CREATE THE PARTICIPANT
     DomainParticipantQos pqos;
@@ -86,6 +86,16 @@ bool helloSubscriber::init()
     // auto sm_transport = std::make_shared<SharedMemTransportDescriptor>();
     // sm_transport->segment_size(2 * 1024 * 1024);
     // pqos.transport().user_transports.push_back(sm_transport);
+
+
+    if (flag == 0) {
+        Locator_t initial_peer;
+        IPLocator::setIPv4(initial_peer, "192.168.2.100");
+        initial_peer.port = 7412;
+        pqos.wire_protocol().builtin.initialPeersList.push_back(initial_peer);
+    }
+
+
     
     participant_ = DomainParticipantFactory::get_instance()->create_participant(0, pqos);
     if (participant_ == nullptr)
@@ -119,12 +129,12 @@ bool helloSubscriber::init()
     rqos.reliability().kind = RELIABLE_RELIABILITY_QOS;
     rqos.durability().kind = TRANSIENT_LOCAL_DURABILITY_QOS;
     rqos.history().kind = KEEP_LAST_HISTORY_QOS;
-    rqos.history().depth = 30;
-    rqos.resource_limits().max_samples = 50;
-    rqos.resource_limits().allocated_samples = 20;
+    rqos.history().depth = 100;
+    // rqos.resource_limits().max_samples = 50;
+    // rqos.resource_limits().allocated_samples = 20;
     // rqos.resource_limits().max_instances   = 1;
     // rqos.resource_limits().max_samples_per_instance = 50;
-    // rqos.data_sharing().off();
+
 
 
     reader_ = subscriber_->create_datareader(topic_, rqos, &listener_);

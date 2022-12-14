@@ -63,7 +63,7 @@ helloSubscriber::~helloSubscriber()
     DomainParticipantFactory::get_instance()->delete_participant(participant_);
 }
 
-bool helloSubscriber::init()
+bool helloSubscriber::init(int flag)
 {
     // CREATE THE PARTICIPANT
     DomainParticipantQos pqos;
@@ -124,7 +124,11 @@ bool helloSubscriber::init()
     rqos.resource_limits().allocated_samples = 20;
     // rqos.resource_limits().max_instances   = 1;
     // rqos.resource_limits().max_samples_per_instance = 50;
-    // rqos.data_sharing().off();
+    if (flag == 0) {
+        rqos.data_sharing().off();
+    } else {
+        rqos.data_sharing().automatic();
+    }
 
 
     reader_ = subscriber_->create_datareader(topic_, rqos, &listener_);

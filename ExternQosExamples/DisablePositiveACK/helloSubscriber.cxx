@@ -63,7 +63,7 @@ helloSubscriber::~helloSubscriber()
     DomainParticipantFactory::get_instance()->delete_participant(participant_);
 }
 
-bool helloSubscriber::init()
+bool helloSubscriber::init(int flag)
 {
     // CREATE THE PARTICIPANT
     DomainParticipantQos pqos;
@@ -118,13 +118,18 @@ bool helloSubscriber::init()
     DataReaderQos rqos;
     rqos.reliability().kind = RELIABLE_RELIABILITY_QOS;
     rqos.durability().kind = TRANSIENT_LOCAL_DURABILITY_QOS;
+    // rqos.history().kind = KEEP_LAST_HISTORY_QOS;
     rqos.history().kind = KEEP_LAST_HISTORY_QOS;
     rqos.history().depth = 30;
     rqos.resource_limits().max_samples = 50;
     rqos.resource_limits().allocated_samples = 20;
     // rqos.resource_limits().max_instances   = 1;
     // rqos.resource_limits().max_samples_per_instance = 50;
-    // rqos.data_sharing().off();
+    if (flag == 0) {
+        rqos.reliable_reader_qos().disable_positive_ACKs.enabled = true;
+    } else {
+        rqos.reliable_reader_qos().disable_positive_ACKs.enabled = false;
+    }
 
 
     reader_ = subscriber_->create_datareader(topic_, rqos, &listener_);

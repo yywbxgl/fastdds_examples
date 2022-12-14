@@ -1,3 +1,5 @@
 .vscode/*
 QosExamples/*/build/*
 QosExamples/*/*/build/*
+ExternQosExamples/*/build/*
+ExternQosExamples/*/*/build/*
