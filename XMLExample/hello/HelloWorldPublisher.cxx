@@ -28,6 +28,7 @@
 #include <fastdds/dds/publisher/qos/PublisherQos.hpp>
 #include <fastdds/dds/publisher/DataWriter.hpp>
 #include <fastdds/dds/publisher/qos/DataWriterQos.hpp>
+#include <fastrtps/xmlparser/XMLProfileManager.h>
 
 #include <thread>
 #include <chrono>
@@ -89,14 +90,17 @@ bool HelloWorldPublisher::init()
     }
 
     //CREATE THE TOPIC
-    topic_ = participant_->create_topic(
-        "HelloWorldTopic",
-        type_.get_type_name(),
-        TOPIC_QOS_DEFAULT);
+    eprosima::fastrtps::TopicAttributes tp_attr;
+    eprosima::fastrtps::xmlparser::XMLProfileManager::fillTopicAttributes("topic_hello_profile", tp_attr);
+    topic_ = participant_->create_topic_with_profile(
+        tp_attr.getTopicName().to_string(),
+        tp_attr.getTopicDataType().to_string(),
+        "topic_hello_profile");
     if (topic_ == nullptr)
     {
         return false;
     }
+
 
     // CREATE THE WRITER
     writer_ = publisher_->create_datawriter_with_profile(topic_, "datawriter_profile", &listener_);

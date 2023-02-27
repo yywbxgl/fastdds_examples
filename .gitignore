@@ -3,3 +3,7 @@ QosExamples/*/build/*
 QosExamples/*/*/build/*
 ExternQosExamples/*/build/*
 ExternQosExamples/*/*/build/*
+TypicalExample/*/build/*
+TypicalExample/*/*/build/*
+Tools
+XMLExample/*/build/*

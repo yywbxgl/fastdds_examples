@@ -31,21 +31,12 @@
             </qos>
         </data_writer>
 
+                
+        <topic profile_name="topic_hello_profile">
+            <name>sun_test_hello</name>
+            <dataType>HelloWorld</dataType>
+            <kind>NO_KEY</kind>
+        </topic>
 
-        <data_reader profile_name="datareader_profile">
-            <topic>
-                <!-- TOPIC_TYPE -->
-            </topic>
-            <qos>
-                <!-- QOS -->
-            </qos>
-        </data_reader>
-
-        <types>
-            <!-- 动态数据类型定义 --> 
-        </types>
-
-        <transport_descriptors>
-        </transport_descriptors>
     </profiles>
 </dds>

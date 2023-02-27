@@ -24,6 +24,8 @@
 #include <fastdds/dds/subscriber/SampleInfo.hpp>
 #include <fastdds/dds/subscriber/Subscriber.hpp>
 #include <fastdds/dds/subscriber/qos/DataReaderQos.hpp>
+#include <fastrtps/xmlparser/XMLProfileManager.h>
+
 
 #include "HelloWorldSubscriber.h"
 #include "HelloWorldPubSubTypes.h"
@@ -59,9 +61,14 @@ HelloWorldSubscriber::~HelloWorldSubscriber()
 bool HelloWorldSubscriber::init()
 {
     //CREATE THE PARTICIPANT
-    DomainParticipantQos pqos;
-    pqos.name("Participant_sub");
-    participant_ = DomainParticipantFactory::get_instance()->create_participant(0, pqos);
+
+    if (ReturnCode_t::RETCODE_OK !=
+        DomainParticipantFactory::get_instance()->load_XML_profiles_file("../HelloWorldSubscriber.xml"))
+    {
+        return false;
+    }
+
+    participant_ = DomainParticipantFactory::get_instance()->create_participant_with_profile(0, "participant_profile");
     if (participant_ == nullptr)
     {
         return false;
@@ -78,19 +85,19 @@ bool HelloWorldSubscriber::init()
     }
 
     //CREATE THE TOPIC
-    topic_ = participant_->create_topic(
-        "HelloWorldTopic",
-        type_.get_type_name(),
-        TOPIC_QOS_DEFAULT);
+    eprosima::fastrtps::TopicAttributes tp_attr;
+    eprosima::fastrtps::xmlparser::XMLProfileManager::fillTopicAttributes("topic_hello_profile", tp_attr);
+    topic_ = participant_->create_topic_with_profile(
+        tp_attr.getTopicName().to_string(),
+        tp_attr.getTopicDataType().to_string(),
+        "topic_hello_profile");
     if (topic_ == nullptr)
     {
         return false;
     }
 
     //CREATE THE READER
-    DataReaderQos rqos = DATAREADER_QOS_DEFAULT;
-    rqos.reliability().kind = RELIABLE_RELIABILITY_QOS;
-    reader_ = subscriber_->create_datareader(topic_, rqos, &listener_);
+    reader_ =  subscriber_->create_datareader_with_profile(topic_, "datawreader_profile", &listener_);
     if (reader_ == nullptr)
     {
         return false;
