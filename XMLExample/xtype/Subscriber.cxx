@@ -73,7 +73,7 @@ bool HelloWorldSubscriber::init()
         return false;
     }
 
-    participant_ = DomainParticipantFactory::get_instance()->create_participant_with_profile(0, "participant_profile");
+    participant_ = DomainParticipantFactory::get_instance()->create_participant_with_profile("participant_profile");
     if (participant_ == nullptr)
     {
         return false;
