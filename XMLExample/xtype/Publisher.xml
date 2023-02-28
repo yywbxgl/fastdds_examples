@@ -10,7 +10,7 @@
             </rtps>
         </participant>
 
-        <data_reader profile_name="datawreader_profile">
+        <data_writer profile_name="datawriter_profile">
             <topic>
                 <historyQos>
                     <kind>KEEP_LAST</kind>
@@ -32,14 +32,13 @@
                     <kind>RELIABLE</kind>
                 </reliability>
             </qos>
-        </data_reader>
+        </data_writer>
 
                 
         <topic profile_name="topic_hello_profile">
             <name>sun_test_hello</name>
-            <dataType>HelloWorld</dataType>
-            <kind>NO_KEY</kind>
-            <resourceLimitsQos></resourceLimitsQos>
+            <dataType>GroupFrame</dataType>
+            <!-- <kind>NO_KEY</kind> -->
         </topic>
 
     </profiles>

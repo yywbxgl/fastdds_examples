@@ -2,6 +2,9 @@
 <dds>
     <profiles xmlns="http://www.eprosima.com/XMLSchemas/fastRTPS_Profiles" >
         <participant profile_name="participant_profile">
+            <domainId>
+                0
+            </domainId>
             <rtps>
                 <name>HelloPubNode</name>
             </rtps>

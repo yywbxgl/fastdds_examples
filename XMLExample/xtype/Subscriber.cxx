@@ -25,10 +25,11 @@
 #include <fastdds/dds/subscriber/Subscriber.hpp>
 #include <fastdds/dds/subscriber/qos/DataReaderQos.hpp>
 #include <fastrtps/xmlparser/XMLProfileManager.h>
+#include <fastrtps/types/DynamicDataFactory.h>
+#include <fastrtps/types/DynamicTypeMember.h>
 
 
-#include "HelloWorldSubscriber.h"
-#include "HelloWorldPubSubTypes.h"
+#include "Subscriber.h"
 
 using namespace eprosima::fastdds::dds;
 
@@ -37,7 +38,7 @@ HelloWorldSubscriber::HelloWorldSubscriber()
     , subscriber_(nullptr)
     , topic_(nullptr)
     , reader_(nullptr)
-    , type_(new HelloWorldPubSubType())
+    , listener_(this)
 {
 }
 
@@ -60,22 +61,31 @@ HelloWorldSubscriber::~HelloWorldSubscriber()
 
 bool HelloWorldSubscriber::init()
 {
-    //CREATE THE PARTICIPANT
-
+    // LOAD XML
     if (ReturnCode_t::RETCODE_OK !=
-        DomainParticipantFactory::get_instance()->load_XML_profiles_file("../HelloWorldSubscriber.xml"))
+        DomainParticipantFactory::get_instance()->load_XML_profiles_file("../Subscriber.xml"))
+    {
+        return false;
+    }
+    if (ReturnCode_t::RETCODE_OK !=
+        DomainParticipantFactory::get_instance()->load_XML_profiles_file("../Camera.xml"))
     {
         return false;
     }
 
-    participant_ = DomainParticipantFactory::get_instance()->create_participant_with_profile("participant_profile");
+    participant_ = DomainParticipantFactory::get_instance()->create_participant_with_profile(0, "participant_profile");
     if (participant_ == nullptr)
     {
         return false;
     }
 
     //REGISTER THE TYPE
-    type_.register_type(participant_);
+    dyn_type = eprosima::fastrtps::xmlparser::XMLProfileManager::getDynamicTypeByName("GroupFrame")->build();
+    TypeSupport m_type(new eprosima::fastrtps::types::DynamicPubSubType(dyn_type));
+    m_type.get()->auto_fill_type_information(false);
+    m_type.get()->auto_fill_type_object(false); // m_type.get()->auto_fill_type_object(true); //  bug
+    m_type.register_type(participant_);
+
 
     //CREATE THE SUBSCRIBER
     subscriber_ = participant_->create_subscriber(SUBSCRIBER_QOS_DEFAULT, nullptr);
@@ -131,18 +141,19 @@ void HelloWorldSubscriber::SubListener::on_data_available(
         DataReader* reader)
 {
     // Take data
-    HelloWorld st;
+    auto m_Hello = eprosima::fastrtps::types::DynamicDataFactory::get_instance()->create_data(subscriber_->dyn_type);
     SampleInfo info;
-
-    if (reader->take_next_sample(&st, &info) == ReturnCode_t::RETCODE_OK)
+    if (reader->take_next_sample(m_Hello, &info) == ReturnCode_t::RETCODE_OK)
     {
         if (info.valid_data)
         {
             // Print your structure data here.
             ++samples;
-            std::cout << "Sample received, index=" << st.index() << std::endl;
+            std::cout << "Sample received, index=" << m_Hello->get_uint64_value(1) << std::endl;
         }
     }
+    eprosima::fastrtps::types::DynamicDataFactory::get_instance()->delete_data(m_Hello);
+
 }
 
 void HelloWorldSubscriber::run()

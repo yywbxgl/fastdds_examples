@@ -37,7 +37,7 @@
                 
         <topic profile_name="topic_hello_profile">
             <name>sun_test_hello</name>
-            <dataType>HelloWorld</dataType>
+            <dataType>GroupFrame</dataType>
             <kind>NO_KEY</kind>
             <resourceLimitsQos></resourceLimitsQos>
         </topic>

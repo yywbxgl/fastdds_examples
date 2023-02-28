@@ -20,8 +20,7 @@
  */
 
 
-#include "HelloWorldPublisher.h"
-#include "HelloWorldPubSubTypes.h"
+#include "Publisher.h"
 
 #include <fastdds/dds/domain/DomainParticipantFactory.hpp>
 #include <fastdds/dds/publisher/Publisher.hpp>
@@ -29,6 +28,7 @@
 #include <fastdds/dds/publisher/DataWriter.hpp>
 #include <fastdds/dds/publisher/qos/DataWriterQos.hpp>
 #include <fastrtps/xmlparser/XMLProfileManager.h>
+#include <fastrtps/types/DynamicDataFactory.h>
 
 #include <thread>
 #include <chrono>
@@ -40,7 +40,6 @@ HelloWorldPublisher::HelloWorldPublisher()
     , publisher_(nullptr)
     , topic_(nullptr)
     , writer_(nullptr)
-    , type_(new HelloWorldPubSubType())
 {
 }
 
@@ -63,13 +62,19 @@ HelloWorldPublisher::~HelloWorldPublisher()
 
 bool HelloWorldPublisher::init()
 {
-    /* Initialize data_ here */
-
+    
+    // load xml file
     if (ReturnCode_t::RETCODE_OK !=
-        DomainParticipantFactory::get_instance()->load_XML_profiles_file("../HelloWorldPublisher.xml"))
+        DomainParticipantFactory::get_instance()->load_XML_profiles_file("../Publisher.xml"))
     {
         return false;
     }
+    if (ReturnCode_t::RETCODE_OK !=
+        DomainParticipantFactory::get_instance()->load_XML_profiles_file("../Camera.xml"))
+    {
+        return false;
+    }
+
 
     //CREATE THE PARTICIPANT
     participant_ = DomainParticipantFactory::get_instance()->create_participant_with_profile("participant_profile");
@@ -79,7 +84,16 @@ bool HelloWorldPublisher::init()
     }
 
     //REGISTER THE TYPE
-    type_.register_type(participant_);
+    
+    dyn_type = eprosima::fastrtps::xmlparser::XMLProfileManager::getDynamicTypeByName("GroupFrame")->build();
+    TypeSupport m_type(new eprosima::fastrtps::types::DynamicPubSubType(dyn_type));
+    m_type.get()->auto_fill_type_information(false);
+    m_type.get()->auto_fill_type_object(false); // m_type.get()->auto_fill_type_object(true); //  bug
+    m_type.register_type(participant_);
+
+    std::cout << "dyn_type name:" <<  dyn_type->get_name()  <<  std::endl;
+    std::cout << "dyn_type get_total_bounds: size:"<<  dyn_type->get_total_bounds() <<  std::endl;
+
 
 
     //CREATE THE PUBLISHER
@@ -136,21 +150,18 @@ void HelloWorldPublisher::PubListener::on_publication_matched(
 
 void HelloWorldPublisher::run()
 {
-
-
-    // Publication code
-
-    HelloWorld st;
+   
     int msgsent = 0;
     while(1) 
     {
-        writer_->write(&st);
         ++msgsent;
-        st.index(msgsent);
-        std::cout << "Sending sample, index=" <<  st.index() <<  std::endl ;
-        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+
+        auto m_Hello = eprosima::fastrtps::types::DynamicDataFactory::get_instance()->create_data(dyn_type);
+        m_Hello->set_uint64_value(msgsent, 1);
+        std::cout << "Sending sample, index=" << m_Hello->get_uint64_value(1) <<  std::endl ;
+        writer_->write(m_Hello);
+        eprosima::fastrtps::types::DynamicDataFactory::get_instance()->delete_data(m_Hello);
+
+        std::this_thread::sleep_for(std::chrono::milliseconds(40));
     }
-
-    /* Initialize your structure here */
-
 }
