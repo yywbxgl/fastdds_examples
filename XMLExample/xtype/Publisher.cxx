@@ -158,6 +158,12 @@ void HelloWorldPublisher::run()
 
         auto m_Hello = eprosima::fastrtps::types::DynamicDataFactory::get_instance()->create_data(dyn_type);
         m_Hello->set_uint64_value(msgsent, 1);
+        eprosima::fastrtps::types::DynamicData* inner = m_Hello->loan_value(0);
+        auto now = std::chrono::system_clock::now();
+        auto now_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(now.time_since_epoch()).count();
+        inner->set_uint64_value(now_ns, 2); 
+        m_Hello->return_loaned_value(inner);
+
         std::cout << "Sending sample, index=" << m_Hello->get_uint64_value(1) <<  std::endl ;
         writer_->write(m_Hello);
         eprosima::fastrtps::types::DynamicDataFactory::get_instance()->delete_data(m_Hello);

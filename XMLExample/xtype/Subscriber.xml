@@ -31,6 +31,9 @@
                 <reliability>
                     <kind>RELIABLE</kind>
                 </reliability>
+                <!-- <data_sharing> 
+                    <kind>AUTOMATIC</kind>
+                </data_sharing> -->
             </qos>
         </data_reader>
 

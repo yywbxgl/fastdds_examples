@@ -3,7 +3,8 @@
     <type>
         <struct name="TimeStamp">
             <member name="Second" type="uint64"/>
-            <member name="MicroSecond" type="uint64"/>
+            <member name="Millisecond" type="uint64"/>
+            <member name="Nanoseconds" type="uint64"/>
         </struct>
     </type>
 

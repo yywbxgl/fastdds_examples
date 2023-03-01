@@ -28,6 +28,7 @@
 #include <fastrtps/types/DynamicDataFactory.h>
 #include <fastrtps/types/DynamicTypeMember.h>
 
+#include <chrono>
 
 #include "Subscriber.h"
 
@@ -149,7 +150,18 @@ void HelloWorldSubscriber::SubListener::on_data_available(
         {
             // Print your structure data here.
             ++samples;
-            std::cout << "Sample received, index=" << m_Hello->get_uint64_value(1) << std::endl;
+            auto now = std::chrono::system_clock::now();
+            auto now_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(now.time_since_epoch()).count();
+
+            std::cout << "Sample received, index=" << m_Hello->get_uint64_value(1)  << std::endl;
+
+            eprosima::fastrtps::types::DynamicData* inner = m_Hello->loan_value(0);
+            auto sample_time = inner->get_uint64_value(2); 
+            auto delay = (now_ns - sample_time)/1000000.0;
+            std::cout << "now=" << now_ns << "  send_time=" << sample_time <<  " delay=" << delay << std::endl;
+            m_Hello->return_loaned_value(inner);
+
+
         }
     }
     eprosima::fastrtps::types::DynamicDataFactory::get_instance()->delete_data(m_Hello);
