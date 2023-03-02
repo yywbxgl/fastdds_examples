@@ -1,0 +1,33 @@
+<types>
+    
+    <type>
+        <struct name="joyson::sensor::camera::TimeStamp">
+            <member name="Second" type="uint64"/>
+            <member name="Millisecond" type="uint64"/>
+            <member name="Nanoseconds" type="uint64"/>
+        </struct>
+    </type>
+
+    <type>
+        <struct name="joyson::sensor::camera::ChannelFrame">
+            <member name="TriggerTimeStamp" type="nonBasic" nonBasicTypeName="joyson::sensor::camera::TimeStamp"/>
+            <member name="ChnTimeStamp" type="nonBasic" nonBasicTypeName="joyson::sensor::camera::TimeStamp"/>
+            <member name="Vaild" type="boolean"/>
+            <member name="CameraID" type="uint8"/>
+            <member name="ColorSpace" type="uint16"/>
+            <member name="Width" type="uint16"/>
+            <member name="Height" type="uint16"/>
+            <member name="Size" type="uint64"/>
+            <member name="Format" type="uint64"/>
+            <member name="Offset" type="uint64"/>
+            <member name="Bits" type="uint8" sequenceMaxLength="4151296"/>
+        </struct>
+
+        <struct name="joyson::sensor::camera::GroupFrame">
+            <member name="GroupTimeStamp" type="nonBasic" nonBasicTypeName="joyson::sensor::camera::TimeStamp"/>
+            <member name="FrameIdx" type="uint64"/>
+            <member name="FrameVector" type="nonBasic" nonBasicTypeName="joyson::sensor::camera::ChannelFrame" sequenceMaxLength="8"/>
+        </struct>
+    </type>
+
+</types>

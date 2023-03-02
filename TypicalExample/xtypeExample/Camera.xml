@@ -12,21 +12,20 @@
         <struct name="ChannelFrame">
             <member name="TriggerTimeStamp" type="nonBasic" nonBasicTypeName="TimeStamp"/>
             <member name="ChnTimeStamp" type="nonBasic" nonBasicTypeName="TimeStamp"/>
-            <member name="Vaild" type="uint64"/>
+            <member name="Vaild" type="boolean"/>
             <member name="CameraID" type="uint8"/>
             <member name="ColorSpace" type="uint16"/>
             <member name="Width" type="uint16"/>
             <member name="Height" type="uint16"/>
-            <member name="Size" type="uint16"/>
-            <member name="Format" type="uint16"/>
-            <member name="Offset" type="uint16"/>
-            <member name="Bits" type="uint8" sequenceMaxLength="4151296"/>
+            <member name="Size" type="uint64"/>
+            <member name="Format" type="uint64"/>
+            <member name="Offset" type="uint64"/>
+            <member name="Bits" type="uint8" arrayDimensions="4151296"/>
         </struct>
 
         <struct name="GroupFrame">
             <member name="GroupTimeStamp" type="nonBasic" nonBasicTypeName="TimeStamp"/>
             <member name="FrameIdx" type="uint64"/>
-            <!-- <member name="FrameVector" type="nonBasic" nonBasicTypeName="ChannelFrame"/> -->
             <member name="FrameVector" type="nonBasic" nonBasicTypeName="ChannelFrame" sequenceMaxLength="8"/>
         </struct>
     </type>

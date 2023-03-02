@@ -153,15 +153,20 @@ void HelloWorldSubscriber::SubListener::on_data_available(
             auto now = std::chrono::system_clock::now();
             auto now_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(now.time_since_epoch()).count();
 
-            std::cout << "Sample received, index=" << m_Hello->get_uint64_value(1)  << std::endl;
-
-            eprosima::fastrtps::types::DynamicData* inner = m_Hello->loan_value(0);
-            auto sample_time = inner->get_uint64_value(2); 
-            auto delay = (now_ns - sample_time)/1000000.0;
-            std::cout << "now=" << now_ns << "  send_time=" << sample_time <<  " delay=" << delay << std::endl;
+            eprosima::fastrtps::types::DynamicData* inner = m_Hello->loan_value(m_Hello->get_member_id_by_name("GroupTimeStamp"));
+            auto sample_time = inner->get_uint64_value(inner->get_member_id_by_name("Nanoseconds")); 
+            auto delay = ((int64_t)now_ns - (int64_t)sample_time)/1000000.0;
+            std::cout << "Sample received, index=" << 
+                m_Hello->get_uint64_value(m_Hello->get_member_id_by_name("FrameIdx")) << " delay=" << delay << std::endl;
             m_Hello->return_loaned_value(inner);
 
-
+            // eprosima::fastrtps::types::DynamicData* inner2 = m_Hello->loan_value(2);
+            // uint32_t ret = inner2->get_member_id_by_name("Width");
+            // std::cout << "ret id " << ret << std::endl;
+            // uint16_t weight = inner2->get_uint16_value(inner2->get_member_id_by_name("Width"));
+            // uint16_t height = inner2->get_uint16_value(inner2->get_member_id_by_name("Height"));
+            // std::cout << "height=" << weight << " weight=" <<height << std::endl;
+            // m_Hello->return_loaned_value(inner2);
         }
     }
     eprosima::fastrtps::types::DynamicDataFactory::get_instance()->delete_data(m_Hello);

@@ -1,18 +1,41 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <dds>
     <profiles xmlns="http://www.eprosima.com/XMLSchemas/fastRTPS_Profiles" >
+
+        <transport_descriptors>
+            <transport_descriptor>
+                <transport_id>UDP_TEST_1</transport_id>
+                <type>UDPv4</type>
+                <TTL>250</TTL>
+                <non_blocking_send>false</non_blocking_send>
+            </transport_descriptor>
+            <transport_descriptor>
+                <transport_id>SHM_TEST_1</transport_id>
+                <type>SHM</type>
+                <segment_size>300000000</segment_size>  
+                <maxMessageSize>100000000</maxMessageSize> 
+                <port_queue_capacity>1024</port_queue_capacity>
+                <healthy_check_timeout_ms>250</healthy_check_timeout_ms> 
+                <rtps_dump_file>test_file.dump</rtps_dump_file> 
+            </transport_descriptor>
+        </transport_descriptors>
+
         <participant profile_name="participant_profile">
             <domainId>
                 0
             </domainId>
             <rtps>
                 <name>HelloPubNode</name>
+                <!-- <useBuiltinTransports>false</useBuiltinTransports>
+                <userTransports> 
+                    <transport_id>UDP_TEST_1</transport_id>
+                </userTransports> -->
             </rtps>
         </participant>
 
         <data_reader profile_name="datawreader_profile">
             <topic>
-                <historyQos>
+                <!-- <historyQos>
                     <kind>KEEP_LAST</kind>
                     <depth>20</depth>
                 </historyQos>
@@ -22,18 +45,18 @@
                     <max_samples_per_instance>400</max_samples_per_instance>
                     <allocated_samples>100</allocated_samples>
                     <extra_samples>1</extra_samples>
-                </resourceLimitsQos>
+                </resourceLimitsQos> -->
             </topic>
             <qos>
-                <durability>
+                <!-- <durability>
                     <kind>TRANSIENT_LOCAL</kind>
-                </durability>
+                </durability> -->
                 <reliability>
                     <kind>RELIABLE</kind>
                 </reliability>
-                <!-- <data_sharing> 
+                <data_sharing> 
                     <kind>AUTOMATIC</kind>
-                </data_sharing> -->
+                </data_sharing>
             </qos>
         </data_reader>
 

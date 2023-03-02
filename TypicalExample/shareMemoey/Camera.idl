@@ -1,0 +1,42 @@
+
+module joyson
+{
+module sensor
+{
+module camera 
+{
+    struct TimeStamp
+    {
+        uint64              Second;         
+        uint64              Millisecond;
+        uint64              Nanoseconds;
+    };
+
+    struct ChannelFrame
+    {
+        TimeStamp           TriggerTimeStamp;   // 曝光时间戳
+        TimeStamp           ChnTimeStamp;       // 获取画面帧时间戳
+        boolean             Vaild;              // 画面是否有效标记
+        uint8               CameraID;           // 摄像头ID
+        uint16              ColorSpace;         // 色彩空间 SMPTE240M
+        uint16              Width;              // 画面宽度
+        uint16              Height;             // 画面高度
+        uint64              Size;               // 画面所占字节数
+        uint64              Format;             // 画面格式 YUYV
+        uint64              Offset;             // 画面首地址偏移
+        uint8               Bits[1920 * 1080 * 2 + 4096];   // 画面实际存储区
+    };
+
+    struct GroupFrame
+    {
+        TimeStamp           GroupTimeStamp;
+        uint64              FrameIdx;
+        sequence<ChannelFrame>        FrameVector;
+    };
+
+};  // namsapce camera
+};  // namsapce sensor
+}; // namsapce joyson
+
+
+

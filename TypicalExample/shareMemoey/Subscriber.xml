@@ -6,42 +6,44 @@
                 0
             </domainId>
             <rtps>
-                <name>HelloPubNode</name>
+                <name>HelloSubNode</name>
             </rtps>
         </participant>
 
-        <data_writer profile_name="datawriter_profile">
+        <data_reader profile_name="datawreader_profile">
             <topic>
-                <historyQos>
+                <!-- <historyQos>
                     <kind>KEEP_LAST</kind>
                     <depth>20</depth>
-                </historyQos>
+                </historyQos> -->
                 <resourceLimitsQos>
-                    <max_samples>5000</max_samples>
+                    <!-- <max_samples>5000</max_samples>
                     <max_instances>10</max_instances>
                     <max_samples_per_instance>400</max_samples_per_instance>
                     <allocated_samples>100</allocated_samples>
-                    <extra_samples>1</extra_samples>
+                    <extra_samples>1</extra_samples> -->
                 </resourceLimitsQos>
             </topic>
             <qos>
                 <durability>
-                    <kind>TRANSIENT_LOCAL</kind>
+                    <!-- <kind>TRANSIENT_LOCAL</kind> -->
+                    <kind>VOLATILE</kind>
                 </durability>
                 <reliability>
                     <kind>RELIABLE</kind>
                 </reliability>
                 <!-- <data_sharing> 
-                    <kind>AUTOMATIC</kind>
+                    <kind>OFF</kind>
                 </data_sharing> -->
             </qos>
-        </data_writer>
+        </data_reader>
 
                 
         <topic profile_name="topic_hello_profile">
             <name>sun_test_hello</name>
-            <dataType>GroupFrame</dataType>
-            <!-- <kind>NO_KEY</kind> -->
+            <dataType>joyson::sensor::camera::GroupFrame</dataType>
+            <kind>NO_KEY</kind>
+            <resourceLimitsQos></resourceLimitsQos>
         </topic>
 
     </profiles>

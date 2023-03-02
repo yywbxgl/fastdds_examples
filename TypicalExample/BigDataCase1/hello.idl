@@ -1,0 +1,7 @@
+struct HelloMsg
+{
+    unsigned short sensor_id;
+    unsigned long index;
+    long long time_stamp;
+    char data[1*1024*1024];
+};
