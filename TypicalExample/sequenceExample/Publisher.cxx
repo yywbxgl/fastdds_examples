@@ -137,46 +137,68 @@ void HelloWorldPublisher::PubListener::on_publication_matched(
 void HelloWorldPublisher::run()
 {
     int msgsent = 0;
-    joyson::sensor::camera::GroupFrame* m_Hello = new  joyson::sensor::camera::GroupFrame();
-
+    
     while(1) 
     {
-        // zero copy
-        void* sample = nullptr;
-        if (ReturnCode_t::RETCODE_OK == writer_->loan_sample(sample)) 
-        {
-            myTimer t;
-            ++msgsent;
+        // // zero copy
+        // void* sample = nullptr;
+        // ReturnCode_t ret = writer_->loan_sample(sample);
+        // if (ReturnCode_t::RETCODE_OK == ret) 
+        // {
+        //     ++msgsent;
+        //     joyson::sensor::camera::GroupFrame* m_Hello =  static_cast<joyson::sensor::camera::GroupFrame*>(sample);
 
-            joyson::sensor::camera::GroupFrame* m_Hello =  static_cast<joyson::sensor::camera::GroupFrame*>(sample);
-            m_Hello->FrameIdx(msgsent);
-            auto now = std::chrono::system_clock::now();
-            auto now_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(now.time_since_epoch()).count();
-            m_Hello->GroupTimeStamp().Nanoseconds(now_ns);
-            m_Hello->FrameVector()[0].Height(1920);
-            m_Hello->FrameVector()[0].Width(1080);
-            m_Hello->FrameVector()[0].Bits()[100] = 22;
+        //     // set data
+        //     m_Hello->FrameIdx(msgsent);
+        //     auto now = std::chrono::system_clock::now();
+        //     auto now_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(now.time_since_epoch()).count();
+        //     m_Hello->GroupTimeStamp().Nanoseconds(now_ns);
+        //     joyson::sensor::camera::ChannelFrame temp;
+        //     temp.Height(1920);
+        //     temp.Width(1080);
+        //     temp.Bits()[100] = 22;
 
-            // write data
-            writer_->write(sample);
-            std::cout << "Sending sample, index=" << m_Hello->FrameIdx() 
-                << ", write cost " << t.count_ms() << "ms" << std::endl;
-        }
+        //     // write data
+        //     myTimer t;
+        //     writer_->write(sample);
+        //     std::cout << "Sending sample, index=" << m_Hello->FrameIdx() 
+        //         << ", write cost " << t.count_ms() << "ms" << std::endl;
+        // }
+        // else 
+        // {
+        //     std::cout << "loan_sample error." << (uint32_t)ret()  << std::endl; 
+        // }
 
 
-        // // no zeor copy
-        // ++msgsent;
-        // m_Hello->FrameIdx(msgsent);
+        // no zeor copy
+        joyson::sensor::camera::GroupFrame* m_Hello = new  joyson::sensor::camera::GroupFrame();
+
+        ++msgsent;
+        m_Hello->FrameIdx(msgsent);
         // m_Hello->FrameVector()[0].Width(1080);
         // m_Hello->FrameVector()[0].Height(1080);
         // m_Hello->FrameVector()[0].Bits()[100] = 22;
-        // auto now = std::chrono::system_clock::now();
-        // auto now_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(now.time_since_epoch()).count();
-        // m_Hello->GroupTimeStamp().Nanoseconds(now_ns);
-        // myTimer t;
-        // writer_->write(m_Hello);
-        // std::cout << "Sending sample, index=" << m_Hello->FrameIdx() 
-        //     << ", write cost " << t.count_ms() << "ms" << std::endl;
+        joyson::sensor::camera::ChannelFrame temp;
+        temp.Height(1920);
+        temp.Width(11);
+        temp.Bits()[100] = 22;
+        m_Hello->FrameVector().emplace_back(temp);
+        m_Hello->FrameVector().emplace_back(temp);
+        m_Hello->FrameVector().emplace_back(temp);
+        m_Hello->FrameVector().emplace_back(temp);
+        m_Hello->FrameVector().emplace_back(temp);
+        m_Hello->FrameVector().emplace_back(temp);
+        m_Hello->FrameVector().emplace_back(temp);
+        m_Hello->FrameVector().emplace_back(temp);
+        auto now = std::chrono::system_clock::now();
+        auto now_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(now.time_since_epoch()).count();
+        m_Hello->GroupTimeStamp().Nanoseconds(now_ns);
+        myTimer t;
+        writer_->write(m_Hello);
+        std::cout << "Sending sample, index=" << m_Hello->FrameIdx() 
+            << ", write cost " << t.count_ms() << "ms" << std::endl;
+
+        delete m_Hello;
 
         std::this_thread::sleep_for(std::chrono::milliseconds(40));
     }

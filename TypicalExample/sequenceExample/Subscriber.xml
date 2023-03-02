@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dds>
+    <profiles xmlns="http://www.eprosima.com/XMLSchemas/fastRTPS_Profiles" >
+
+        <transport_descriptors>
+            <transport_descriptor>
+                <transport_id>UDP_TEST_1</transport_id>
+                <type>UDPv4</type>
+                <TTL>250</TTL>
+                <non_blocking_send>false</non_blocking_send>
+            </transport_descriptor>
+            <transport_descriptor>
+                <transport_id>SHM_TEST_1</transport_id>
+                <type>SHM</type>
+                <segment_size>300000000</segment_size>  
+                <maxMessageSize>100000000</maxMessageSize> 
+            </transport_descriptor>
+        </transport_descriptors>
+
+        <participant profile_name="participant_profile">
+            <domainId>0</domainId>
+            <rtps>
+                <name>HelloSubNode</name>
+                <userTransports> 
+                    <!-- <transport_id>UDP_TEST_1</transport_id> -->
+                    <transport_id>SHM_TEST_1</transport_id>
+                </userTransports>
+                <useBuiltinTransports>false</useBuiltinTransports>
+            </rtps>
+        </participant>
+
+        <data_reader profile_name="datawreader_profile">
+            <topic>
+                <historyQos>
+                    <kind>KEEP_LAST</kind>
+                    <depth>3</depth>
+                </historyQos>
+                <resourceLimitsQos>
+                    <!-- <max_samples>5000</max_samples>
+                    <max_instances>10</max_instances>
+                    <max_samples_per_instance>400</max_samples_per_instance>
+                    <allocated_samples>100</allocated_samples>
+                    <extra_samples>1</extra_samples> -->
+                </resourceLimitsQos>
+            </topic>
+            <qos>
+                <durability>
+                    <!-- <kind>TRANSIENT_LOCAL</kind> -->
+                    <kind>VOLATILE</kind>
+                </durability>
+                <reliability>
+                    <kind>RELIABLE</kind>
+                    <!-- <kind>BEST_EFFORT</kind> -->
+                </reliability>
+                <data_sharing> 
+                    <kind>AUTOMATIC</kind>
+                    <!-- <kind>OFF</kind> -->
+                </data_sharing>
+            </qos>
+        </data_reader>
+
+                
+        <topic profile_name="topic_hello_profile">
+            <name>sun_test_hello</name>
+            <dataType>joyson::sensor::camera::GroupFrame</dataType>
+            <kind>NO_KEY</kind>
+            <resourceLimitsQos></resourceLimitsQos>
+        </topic>
+
+    </profiles>
+</dds>
