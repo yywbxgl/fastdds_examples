@@ -28,6 +28,7 @@
 #include <fastdds/dds/subscriber/DataReaderListener.hpp>
 #include <fastdds/dds/subscriber/Subscriber.hpp>
 
+
 class HelloWorldSubscriber
 {
 public:
@@ -46,7 +47,7 @@ private:
     eprosima::fastdds::dds::Subscriber* subscriber_;
     eprosima::fastdds::dds::Topic* topic_;
     eprosima::fastdds::dds::DataReader* reader_;
-    eprosima::fastrtps::types::DynamicType_ptr dyn_type;
+    eprosima::fastdds::dds::TypeSupport type_;
 
     class SubListener : public eprosima::fastdds::dds::DataReaderListener
     {

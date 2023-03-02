@@ -31,7 +31,8 @@ module camera
     {
         TimeStamp           GroupTimeStamp;
         uint64              FrameIdx;
-        sequence<ChannelFrame>        FrameVector;
+        ChannelFrame        FrameVector[8];
+        // sequence<ChannelFrame,8> FrameVector;
     };
 
 };  // namsapce camera

@@ -27,10 +27,14 @@
 #include <fastrtps/xmlparser/XMLProfileManager.h>
 #include <fastrtps/types/DynamicDataFactory.h>
 #include <fastrtps/types/DynamicTypeMember.h>
+#include <fastdds/dds/core/LoanableSequence.hpp>
+
 
 #include <chrono>
 
 #include "Subscriber.h"
+#include "CameraPubSubTypes.h"
+#include "mytimer.h"
 
 using namespace eprosima::fastdds::dds;
 
@@ -40,6 +44,7 @@ HelloWorldSubscriber::HelloWorldSubscriber()
     , topic_(nullptr)
     , reader_(nullptr)
     , listener_(this)
+    , type_(new joyson::sensor::camera::GroupFramePubSubType())
 {
 }
 
@@ -68,11 +73,7 @@ bool HelloWorldSubscriber::init()
     {
         return false;
     }
-    if (ReturnCode_t::RETCODE_OK !=
-        DomainParticipantFactory::get_instance()->load_XML_profiles_file("../Camera.xml"))
-    {
-        return false;
-    }
+
 
     participant_ = DomainParticipantFactory::get_instance()->create_participant_with_profile("participant_profile");
     if (participant_ == nullptr)
@@ -81,11 +82,7 @@ bool HelloWorldSubscriber::init()
     }
 
     //REGISTER THE TYPE
-    dyn_type = eprosima::fastrtps::xmlparser::XMLProfileManager::getDynamicTypeByName("joyson::sensor::camera::GroupFrame")->build();
-    TypeSupport m_type(new eprosima::fastrtps::types::DynamicPubSubType(dyn_type));
-    m_type.get()->auto_fill_type_information(false);
-    m_type.get()->auto_fill_type_object(false); // m_type.get()->auto_fill_type_object(true); //  bug
-    m_type.register_type(participant_);
+    type_.register_type(participant_);
 
 
     //CREATE THE SUBSCRIBER
@@ -141,28 +138,27 @@ void HelloWorldSubscriber::SubListener::on_subscription_matched(
 void HelloWorldSubscriber::SubListener::on_data_available(
         DataReader* reader)
 {
-    // Take data
-    auto m_Hello = eprosima::fastrtps::types::DynamicDataFactory::get_instance()->create_data(subscriber_->dyn_type);
-    SampleInfo info;
-    if (reader->take_next_sample(m_Hello, &info) == ReturnCode_t::RETCODE_OK)
+    // Take data zero copy
+    eprosima::fastdds::dds::LoanableSequence<joyson::sensor::camera::GroupFrame>  LoanableData;
+    SampleInfoSeq infos;
+    while (ReturnCode_t::RETCODE_OK == reader->take(LoanableData, infos))
     {
-        if (info.valid_data)
+        for (LoanableCollection::size_type i = 0; i < infos.length(); ++i) 
         {
-            // Print your structure data here.
-            ++samples;
-            auto now = std::chrono::system_clock::now();
-            auto now_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(now.time_since_epoch()).count();
-            eprosima::fastrtps::types::DynamicData* inner = m_Hello->loan_value(0);
-            auto sample_time = inner->get_uint64_value(2); 
-            auto delay = ((int64_t)now_ns - (int64_t)sample_time)/1000000.0;
+            if (infos[i].valid_data)
+            {
+                ++samples;
+                const joyson::sensor::camera::GroupFrame& m_Hello = LoanableData[i];
 
-            std::cout << "Sample received, index=" << m_Hello->get_uint64_value(1) << " delay=" << delay << "ms" << std::endl;
-            // std::cout << "now=" << now_ns << "  send_time=" << sample_time <<  " delay=" << delay << "ms" << std::endl;
-            m_Hello->return_loaned_value(inner);
+                auto now = std::chrono::system_clock::now();
+                auto now_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(now.time_since_epoch()).count();
+                float delay = ((int64_t)now_ns - (int64_t)m_Hello.GroupTimeStamp().Nanoseconds())/1000000.0;
+                std::cout << "Sample received, index=" << m_Hello.FrameIdx() << " delay=" << delay << "ms" << std::endl;
+                // std::cout << "Bit[100]=" <<   (uint64_t)m_Hello.FrameVector()[0].Bits()[100] << std::endl;
+            }
         }
+        reader->return_loan(LoanableData, infos);
     }
-    eprosima::fastrtps::types::DynamicDataFactory::get_instance()->delete_data(m_Hello);
-
 }
 
 void HelloWorldSubscriber::run()

@@ -889,9 +889,9 @@ joyson::sensor::camera::GroupFrame::GroupFrame()
 {
     // m_GroupTimeStamp com.eprosima.fastdds.idl.parser.typecode.StructTypeCode@679b62af
 
-    // m_FrameIdx com.eprosima.idl.parser.typecode.PrimitiveTypeCode@4d339552
+    // m_FrameIdx com.eprosima.idl.parser.typecode.PrimitiveTypeCode@25359ed8
     m_FrameIdx = 0;
-    // m_FrameVector com.eprosima.idl.parser.typecode.SequenceTypeCode@f0f2775
+    // m_FrameVector com.eprosima.idl.parser.typecode.ArrayTypeCode@21a947fe
 
 
 }
@@ -964,13 +964,10 @@ size_t joyson::sensor::camera::GroupFrame::getMaxCdrSerializedSize(
     current_alignment += 8 + eprosima::fastcdr::Cdr::alignment(current_alignment, 8);
 
 
-    current_alignment += 4 + eprosima::fastcdr::Cdr::alignment(current_alignment, 4);
 
-
-    for(size_t a = 0; a < 100; ++a)
+    for(size_t a = 0; a < (8); ++a)
     {
         current_alignment += joyson::sensor::camera::ChannelFrame::getMaxCdrSerializedSize(current_alignment);}
-
 
     return current_alignment - initial_alignment;
 }
@@ -987,13 +984,11 @@ size_t joyson::sensor::camera::GroupFrame::getCdrSerializedSize(
     current_alignment += 8 + eprosima::fastcdr::Cdr::alignment(current_alignment, 8);
 
 
-    current_alignment += 4 + eprosima::fastcdr::Cdr::alignment(current_alignment, 4);
-
 
     for(size_t a = 0; a < data.FrameVector().size(); ++a)
     {
-        current_alignment += joyson::sensor::camera::ChannelFrame::getCdrSerializedSize(data.FrameVector().at(a), current_alignment);}
-
+            current_alignment += joyson::sensor::camera::ChannelFrame::getCdrSerializedSize(data.FrameVector().at(a), current_alignment);
+    }
 
     return current_alignment - initial_alignment;
 }
@@ -1006,6 +1001,7 @@ void joyson::sensor::camera::GroupFrame::serialize(
     scdr << m_FrameIdx;
     scdr << m_FrameVector;
 
+
 }
 
 void joyson::sensor::camera::GroupFrame::deserialize(
@@ -1015,6 +1011,7 @@ void joyson::sensor::camera::GroupFrame::deserialize(
     dcdr >> m_GroupTimeStamp;
     dcdr >> m_FrameIdx;
     dcdr >> m_FrameVector;
+
 }
 
 /*!
@@ -1087,7 +1084,7 @@ uint64_t& joyson::sensor::camera::GroupFrame::FrameIdx()
  * @param _FrameVector New value to be copied in member FrameVector
  */
 void joyson::sensor::camera::GroupFrame::FrameVector(
-        const std::vector<joyson::sensor::camera::ChannelFrame>& _FrameVector)
+        const std::array<joyson::sensor::camera::ChannelFrame, 8>& _FrameVector)
 {
     m_FrameVector = _FrameVector;
 }
@@ -1097,7 +1094,7 @@ void joyson::sensor::camera::GroupFrame::FrameVector(
  * @param _FrameVector New value to be moved in member FrameVector
  */
 void joyson::sensor::camera::GroupFrame::FrameVector(
-        std::vector<joyson::sensor::camera::ChannelFrame>&& _FrameVector)
+        std::array<joyson::sensor::camera::ChannelFrame, 8>&& _FrameVector)
 {
     m_FrameVector = std::move(_FrameVector);
 }
@@ -1106,7 +1103,7 @@ void joyson::sensor::camera::GroupFrame::FrameVector(
  * @brief This function returns a constant reference to member FrameVector
  * @return Constant reference to member FrameVector
  */
-const std::vector<joyson::sensor::camera::ChannelFrame>& joyson::sensor::camera::GroupFrame::FrameVector() const
+const std::array<joyson::sensor::camera::ChannelFrame, 8>& joyson::sensor::camera::GroupFrame::FrameVector() const
 {
     return m_FrameVector;
 }
@@ -1115,7 +1112,7 @@ const std::vector<joyson::sensor::camera::ChannelFrame>& joyson::sensor::camera:
  * @brief This function returns a reference to member FrameVector
  * @return Reference to member FrameVector
  */
-std::vector<joyson::sensor::camera::ChannelFrame>& joyson::sensor::camera::GroupFrame::FrameVector()
+std::array<joyson::sensor::camera::ChannelFrame, 8>& joyson::sensor::camera::GroupFrame::FrameVector()
 {
     return m_FrameVector;
 }

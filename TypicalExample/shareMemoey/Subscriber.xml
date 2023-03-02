@@ -1,21 +1,42 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <dds>
     <profiles xmlns="http://www.eprosima.com/XMLSchemas/fastRTPS_Profiles" >
+
+        <transport_descriptors>
+            <transport_descriptor>
+                <transport_id>UDP_TEST_1</transport_id>
+                <type>UDPv4</type>
+                <TTL>250</TTL>
+                <non_blocking_send>false</non_blocking_send>
+            </transport_descriptor>
+            <transport_descriptor>
+                <transport_id>SHM_TEST_1</transport_id>
+                <type>SHM</type>
+                <!-- <segment_size>300000000</segment_size>  
+                <maxMessageSize>100000000</maxMessageSize> 
+                <port_queue_capacity>1024</port_queue_capacity>
+                <healthy_check_timeout_ms>250</healthy_check_timeout_ms> 
+                <rtps_dump_file>test_file.dump</rtps_dump_file>  -->
+            </transport_descriptor>
+        </transport_descriptors>
+
         <participant profile_name="participant_profile">
-            <domainId>
-                0
-            </domainId>
+            <domainId>0</domainId>
             <rtps>
                 <name>HelloSubNode</name>
+                <userTransports> 
+                    <transport_id>SHM_TEST_1</transport_id>
+                </userTransports>
+                <useBuiltinTransports>false</useBuiltinTransports>
             </rtps>
         </participant>
 
         <data_reader profile_name="datawreader_profile">
             <topic>
-                <!-- <historyQos>
-                    <kind>KEEP_LAST</kind>
-                    <depth>20</depth>
-                </historyQos> -->
+                <historyQos>
+                    <!-- <kind>KEEP_LAST</kind> -->
+                    <depth>1</depth>
+                </historyQos>
                 <resourceLimitsQos>
                     <!-- <max_samples>5000</max_samples>
                     <max_instances>10</max_instances>
@@ -32,9 +53,9 @@
                 <reliability>
                     <kind>RELIABLE</kind>
                 </reliability>
-                <!-- <data_sharing> 
-                    <kind>OFF</kind>
-                </data_sharing> -->
+                <data_sharing> 
+                    <kind>AUTOMATIC</kind>
+                </data_sharing>
             </qos>
         </data_reader>
 

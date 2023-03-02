@@ -2,15 +2,23 @@
 <dds>
     <profiles xmlns="http://www.eprosima.com/XMLSchemas/fastRTPS_Profiles" >
 
-        <!-- <transport_descriptors>
+        <transport_descriptors>
             <transport_descriptor>
                 <transport_id>UDP_TEST_1</transport_id>
                 <type>UDPv4</type>
                 <TTL>250</TTL>
                 <non_blocking_send>false</non_blocking_send>
-                <output_port>5101</output_port>
             </transport_descriptor>
-        </transport_descriptors> -->
+            <transport_descriptor>
+                <transport_id>SHM_TEST_1</transport_id>
+                <type>SHM</type>
+                <segment_size>300000000</segment_size>  
+                <maxMessageSize>100000000</maxMessageSize> 
+                <!-- <port_queue_capacity>1024</port_queue_capacity>
+                <healthy_check_timeout_ms>250</healthy_check_timeout_ms> 
+                <rtps_dump_file>test_file.dump</rtps_dump_file>  -->
+            </transport_descriptor>
+        </transport_descriptors>
 
         <!-- <sendSocketBufferSize>8192</sendSocketBufferSize>
         <listenSocketBufferSize>8192</listenSocketBufferSize> -->
@@ -30,10 +38,10 @@
                     </initialPeersList>
                 </builtin>
 
-                <!-- <userTransports> 
-                    <transport_id>UDP_TEST_1</transport_id>
+                <userTransports> 
+                    <transport_id>SHM_TEST_1</transport_id>
                 </userTransports>
-                <useBuiltinTransports>false</useBuiltinTransports> -->
+                <useBuiltinTransports>false</useBuiltinTransports>
             </rtps>
         </participant>
 
@@ -52,6 +60,7 @@
                     <extra_samples>1</extra_samples> -->
                 </resourceLimitsQos>
             </topic>
+
             <qos>
                 <durability>
                     <!-- <kind>TRANSIENT_LOCAL</kind> -->
@@ -63,9 +72,9 @@
                 <publishMode> 
                     <kind>ASYNCHRONOUS</kind>
                 </publishMode>
-                <!-- <data_sharing> 
-                    <kind>OFF</kind>
-                </data_sharing> -->
+                <data_sharing> 
+                    <kind>AUTOMATIC</kind>
+                </data_sharing>
             </qos>
 
             <times>
@@ -82,7 +91,6 @@
                     <nanosec>856000</nanosec>
                 </nackSupressionDuration>     -->
             </times>
-
         </data_writer>
 
                 

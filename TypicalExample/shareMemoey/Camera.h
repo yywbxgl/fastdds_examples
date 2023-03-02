@@ -715,26 +715,26 @@ namespace joyson {
                  * @param _FrameVector New value to be copied in member FrameVector
                  */
                 eProsima_user_DllExport void FrameVector(
-                        const std::vector<joyson::sensor::camera::ChannelFrame>& _FrameVector);
+                        const std::array<joyson::sensor::camera::ChannelFrame, 8>& _FrameVector);
 
                 /*!
                  * @brief This function moves the value in member FrameVector
                  * @param _FrameVector New value to be moved in member FrameVector
                  */
                 eProsima_user_DllExport void FrameVector(
-                        std::vector<joyson::sensor::camera::ChannelFrame>&& _FrameVector);
+                        std::array<joyson::sensor::camera::ChannelFrame, 8>&& _FrameVector);
 
                 /*!
                  * @brief This function returns a constant reference to member FrameVector
                  * @return Constant reference to member FrameVector
                  */
-                eProsima_user_DllExport const std::vector<joyson::sensor::camera::ChannelFrame>& FrameVector() const;
+                eProsima_user_DllExport const std::array<joyson::sensor::camera::ChannelFrame, 8>& FrameVector() const;
 
                 /*!
                  * @brief This function returns a reference to member FrameVector
                  * @return Reference to member FrameVector
                  */
-                eProsima_user_DllExport std::vector<joyson::sensor::camera::ChannelFrame>& FrameVector();
+                eProsima_user_DllExport std::array<joyson::sensor::camera::ChannelFrame, 8>& FrameVector();
 
                 /*!
                  * @brief This function returns the maximum serialized size of an object
@@ -797,7 +797,7 @@ namespace joyson {
 
                 joyson::sensor::camera::TimeStamp m_GroupTimeStamp;
                 uint64_t m_FrameIdx;
-                std::vector<joyson::sensor::camera::ChannelFrame> m_FrameVector;
+                std::array<joyson::sensor::camera::ChannelFrame, 8> m_FrameVector;
             };
         } // namespace camera
     } // namespace sensor

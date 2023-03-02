@@ -48,7 +48,6 @@ private:
     eprosima::fastdds::dds::Topic* topic_;
     eprosima::fastdds::dds::DataWriter* writer_;
     eprosima::fastdds::dds::TypeSupport type_;
-    eprosima::fastrtps::types::DynamicType_ptr dyn_type;
 
     class PubListener : public eprosima::fastdds::dds::DataWriterListener
     {
