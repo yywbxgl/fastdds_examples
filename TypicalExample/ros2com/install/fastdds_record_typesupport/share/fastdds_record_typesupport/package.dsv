@@ -1,0 +1,14 @@
+source;share/fastdds_record_typesupport/hook/cmake_prefix_path.ps1
+source;share/fastdds_record_typesupport/hook/cmake_prefix_path.dsv
+source;share/fastdds_record_typesupport/hook/cmake_prefix_path.sh
+source;share/fastdds_record_typesupport/hook/ld_library_path_lib.ps1
+source;share/fastdds_record_typesupport/hook/ld_library_path_lib.dsv
+source;share/fastdds_record_typesupport/hook/ld_library_path_lib.sh
+source;share/fastdds_record_typesupport/hook/pythonpath.ps1
+source;share/fastdds_record_typesupport/hook/pythonpath.dsv
+source;share/fastdds_record_typesupport/hook/pythonpath.sh
+source;share/fastdds_record_typesupport/local_setup.bash
+source;share/fastdds_record_typesupport/local_setup.dsv
+source;share/fastdds_record_typesupport/local_setup.ps1
+source;share/fastdds_record_typesupport/local_setup.sh
+source;share/fastdds_record_typesupport/local_setup.zsh

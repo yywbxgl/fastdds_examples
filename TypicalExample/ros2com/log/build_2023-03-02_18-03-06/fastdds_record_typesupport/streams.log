@@ -1,0 +1,211 @@
+[0.046s] Invoking command in '/home/qiliang/fastdds_examples/TypicalExample/ros2com/build/fastdds_record_typesupport': CMAKE_PREFIX_PATH=/home/qiliang/Fast-DDS/install/fastrtps:/home/qiliang/Fast-DDS/install/foonathan_memory_vendor:/home/qiliang/Fast-DDS/install/fastcdr:/opt/ros/galactic:/opt/ros/noetic /usr/bin/cmake --build /home/qiliang/fastdds_examples/TypicalExample/ros2com/build/fastdds_record_typesupport -- -j8 -l8
+[0.109s] -- Found ament_cmake: 1.1.5 (/opt/ros/galactic/share/ament_cmake/cmake)
+[0.146s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+[0.148s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.238s] -- Found rosidl_default_generators: 1.1.1 (/opt/ros/galactic/share/rosidl_default_generators/cmake)
+[0.241s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.248s] -- Found rosidl_adapter: 2.2.1 (/opt/ros/galactic/share/rosidl_adapter/cmake)
+[0.447s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.572s] -- Found ament_cmake_ros: 0.9.2 (/opt/ros/galactic/share/ament_cmake_ros/cmake)
+[0.741s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.752s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.792s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3.5") 
+[0.793s] -- Found python_cmake_module: 0.8.1 (/opt/ros/galactic/share/python_cmake_module/cmake)
+[0.834s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.834s] -- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.8
+[0.834s] -- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.8.so
+[0.852s] -- Found ament_lint_auto: 0.10.6 (/opt/ros/galactic/share/ament_lint_auto/cmake)
+[0.870s] -- Added test 'copyright' to check source files copyright and LICENSE
+[0.877s] -- Added test 'lint_cmake' to check CMake code style
+[0.880s] -- Added test 'xmllint' to check XML markup files
+[0.890s] -- Configuring done
+[0.993s] -- Generating done
+[1.001s] -- Build files have been written to: /home/qiliang/fastdds_examples/TypicalExample/ros2com/build/fastdds_record_typesupport
+[1.080s] [35m[1mScanning dependencies of target fastdds_record_typesupport__cpp[0m
+[1.082s] [  3%] [34m[1mGenerating C code for ROS interfaces[0m
+[1.126s] [  6%] [34m[1mGenerating C++ code for ROS interfaces[0m
+[1.372s] [35m[1mScanning dependencies of target fastdds_record_typesupport__rosidl_generator_c[0m
+[1.415s] [  6%] Built target fastdds_record_typesupport__cpp
+[1.436s] [  9%] [32mBuilding C object CMakeFiles/fastdds_record_typesupport__rosidl_generator_c.dir/rosidl_generator_c/fastdds_record_typesupport/idl/detail/hello_world__functions.c.o[0m
+[1.455s] [ 16%] [34m[1mGenerating C++ introspection for ROS interfaces[0m
+[1.456s] [ 16%] [34m[1mGenerating C++ type support for eProsima Fast-RTPS[0m
+[1.457s] [ 19%] [34m[1mGenerating C++ type support dispatch for ROS interfaces[0m
+[1.542s] [ 22%] [32m[1mLinking C shared library libfastdds_record_typesupport__rosidl_generator_c.so[0m
+[1.667s] [ 22%] Built target fastdds_record_typesupport__rosidl_generator_c
+[1.676s] [35m[1mScanning dependencies of target fastdds_record_typesupport__rosidl_typesupport_cpp[0m
+[1.704s] [35m[1mScanning dependencies of target fastdds_record_typesupport__rosidl_typesupport_fastrtps_cpp[0m
+[1.715s] [ 25%] [34m[1mGenerating C type support dispatch for ROS interfaces[0m
+[1.719s] [35m[1mScanning dependencies of target fastdds_record_typesupport__rosidl_typesupport_introspection_cpp[0m
+[1.722s] [ 29%] [34m[1mGenerating C introspection for ROS interfaces[0m
+[1.755s] [ 32%] [32mBuilding CXX object CMakeFiles/fastdds_record_typesupport__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/fastdds_record_typesupport/idl/detail/dds_fastrtps/hello_world__type_support.cpp.o[0m
+[1.757s] [ 35%] [32mBuilding CXX object CMakeFiles/fastdds_record_typesupport__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/fastdds_record_typesupport/idl/hello_world__type_support.cpp.o[0m
+[1.780s] [ 38%] [32mBuilding CXX object CMakeFiles/fastdds_record_typesupport__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/fastdds_record_typesupport/idl/detail/hello_world__type_support.cpp.o[0m
+[1.951s] [35m[1mScanning dependencies of target fastdds_record_typesupport__rosidl_typesupport_c[0m
+[2.004s] [35m[1mScanning dependencies of target fastdds_record_typesupport__rosidl_typesupport_introspection_c[0m
+[2.042s] [ 41%] [32mBuilding CXX object CMakeFiles/fastdds_record_typesupport__rosidl_typesupport_c.dir/rosidl_typesupport_c/fastdds_record_typesupport/idl/hello_world__type_support.cpp.o[0m
+[2.070s] [ 45%] [32mBuilding C object CMakeFiles/fastdds_record_typesupport__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/fastdds_record_typesupport/idl/detail/hello_world__type_support.c.o[0m
+[2.139s] [ 48%] [32m[1mLinking CXX shared library libfastdds_record_typesupport__rosidl_typesupport_c.so[0m
+[2.175s] [ 51%] [32m[1mLinking C shared library libfastdds_record_typesupport__rosidl_typesupport_introspection_c.so[0m
+[2.179s] [ 54%] [32m[1mLinking CXX shared library libfastdds_record_typesupport__rosidl_typesupport_cpp.so[0m
+[2.195s] [ 58%] [32m[1mLinking CXX shared library libfastdds_record_typesupport__rosidl_typesupport_introspection_cpp.so[0m
+[2.282s] [ 58%] Built target fastdds_record_typesupport__rosidl_typesupport_c
+[2.312s] [ 58%] Built target fastdds_record_typesupport__rosidl_typesupport_introspection_c
+[2.324s] [ 58%] Built target fastdds_record_typesupport__rosidl_typesupport_cpp
+[2.382s] [ 58%] Built target fastdds_record_typesupport__rosidl_typesupport_introspection_cpp
+[2.429s] [ 61%] [32m[1mLinking CXX shared library libfastdds_record_typesupport__rosidl_typesupport_fastrtps_cpp.so[0m
+[2.678s] [ 61%] Built target fastdds_record_typesupport__rosidl_typesupport_fastrtps_cpp
+[2.717s] [ 64%] [34m[1mGenerating C type support for eProsima Fast-RTPS[0m
+[2.955s] [35m[1mScanning dependencies of target fastdds_record_typesupport__rosidl_typesupport_fastrtps_c[0m
+[3.006s] [ 67%] [32mBuilding CXX object CMakeFiles/fastdds_record_typesupport__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/fastdds_record_typesupport/idl/detail/hello_world__type_support_c.cpp.o[0m
+[3.496s] [ 70%] [32m[1mLinking CXX shared library libfastdds_record_typesupport__rosidl_typesupport_fastrtps_c.so[0m
+[3.734s] [ 70%] Built target fastdds_record_typesupport__rosidl_typesupport_fastrtps_c
+[3.811s] [ 70%] Built target fastdds_record_typesupport
+[3.850s] [35m[1mScanning dependencies of target fastdds_record_typesupport__py[0m
+[3.891s] [ 74%] [34m[1mGenerating Python code for ROS interfaces[0m
+[4.284s] [ 74%] Built target fastdds_record_typesupport__py
+[4.327s] [35m[1mScanning dependencies of target fastdds_record_typesupport__python[0m
+[4.394s] [ 77%] [32mBuilding C object CMakeFiles/fastdds_record_typesupport__python.dir/rosidl_generator_py/fastdds_record_typesupport/idl/_hello_world_s.c.o[0m
+[4.579s] [ 80%] [32m[1mLinking C shared library rosidl_generator_py/fastdds_record_typesupport/libfastdds_record_typesupport__python.so[0m
+[4.705s] [ 80%] Built target fastdds_record_typesupport__python
+[4.751s] [35m[1mScanning dependencies of target fastdds_record_typesupport__rosidl_typesupport_c__pyext[0m
+[4.751s] [35m[1mScanning dependencies of target fastdds_record_typesupport__rosidl_typesupport_fastrtps_c__pyext[0m
+[4.753s] [35m[1mScanning dependencies of target fastdds_record_typesupport__rosidl_typesupport_introspection_c__pyext[0m
+[4.826s] [ 83%] [32mBuilding C object CMakeFiles/fastdds_record_typesupport__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/fastdds_record_typesupport/_fastdds_record_typesupport_s.ep.rosidl_typesupport_c.c.o[0m
+[4.857s] [ 87%] [32mBuilding C object CMakeFiles/fastdds_record_typesupport__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/fastdds_record_typesupport/_fastdds_record_typesupport_s.ep.rosidl_typesupport_introspection_c.c.o[0m
+[4.871s] [ 90%] [32mBuilding C object CMakeFiles/fastdds_record_typesupport__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/fastdds_record_typesupport/_fastdds_record_typesupport_s.ep.rosidl_typesupport_fastrtps_c.c.o[0m
+[5.047s] [ 93%] [32m[1mLinking C shared library rosidl_generator_py/fastdds_record_typesupport/fastdds_record_typesupport_s__rosidl_typesupport_c.cpython-38-x86_64-linux-gnu.so[0m
+[5.060s] [ 96%] [32m[1mLinking C shared library rosidl_generator_py/fastdds_record_typesupport/fastdds_record_typesupport_s__rosidl_typesupport_introspection_c.cpython-38-x86_64-linux-gnu.so[0m
+[5.097s] [100%] [32m[1mLinking CXX shared library rosidl_generator_py/fastdds_record_typesupport/fastdds_record_typesupport_s__rosidl_typesupport_fastrtps_c.cpython-38-x86_64-linux-gnu.so[0m
+[5.170s] [100%] Built target fastdds_record_typesupport__rosidl_typesupport_c__pyext
+[5.189s] [100%] Built target fastdds_record_typesupport__rosidl_typesupport_introspection_c__pyext
+[5.315s] [100%] Built target fastdds_record_typesupport__rosidl_typesupport_fastrtps_c__pyext
+[5.351s] Invoked command in '/home/qiliang/fastdds_examples/TypicalExample/ros2com/build/fastdds_record_typesupport' returned '0': CMAKE_PREFIX_PATH=/home/qiliang/Fast-DDS/install/fastrtps:/home/qiliang/Fast-DDS/install/foonathan_memory_vendor:/home/qiliang/Fast-DDS/install/fastcdr:/opt/ros/galactic:/opt/ros/noetic /usr/bin/cmake --build /home/qiliang/fastdds_examples/TypicalExample/ros2com/build/fastdds_record_typesupport -- -j8 -l8
+[5.688s] Invoking command in '/home/qiliang/fastdds_examples/TypicalExample/ros2com/build/fastdds_record_typesupport': CMAKE_PREFIX_PATH=/home/qiliang/Fast-DDS/install/fastrtps:/home/qiliang/Fast-DDS/install/foonathan_memory_vendor:/home/qiliang/Fast-DDS/install/fastcdr:/opt/ros/galactic:/opt/ros/noetic /usr/bin/cmake --install /home/qiliang/fastdds_examples/TypicalExample/ros2com/build/fastdds_record_typesupport
+[5.713s] -- Install configuration: ""
+[5.723s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/share/ament_index/resource_index/rosidl_interfaces/fastdds_record_typesupport
+[5.724s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/include/fastdds_record_typesupport
+[5.724s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/include/fastdds_record_typesupport/msg
+[5.724s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/include/fastdds_record_typesupport/msg/rosidl_generator_c__visibility_control.h
+[5.725s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/include/fastdds_record_typesupport/idl
+[5.725s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/include/fastdds_record_typesupport/idl/hello.h
+[5.726s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/include/fastdds_record_typesupport/idl/detail
+[5.726s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/include/fastdds_record_typesupport/idl/detail/hello_world__functions.c
+[5.726s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/include/fastdds_record_typesupport/idl/detail/hello_world__type_support.h
+[5.728s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/include/fastdds_record_typesupport/idl/detail/hello__functions.h
+[5.728s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/include/fastdds_record_typesupport/idl/detail/hello_world__struct.h
+[5.728s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/include/fastdds_record_typesupport/idl/detail/hello__type_support.h
+[5.729s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/include/fastdds_record_typesupport/idl/detail/hello__struct.h
+[5.730s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/include/fastdds_record_typesupport/idl/detail/hello__functions.c
+[5.730s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/include/fastdds_record_typesupport/idl/detail/hello_world__functions.h
+[5.730s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/include/fastdds_record_typesupport/idl/hello_world.h
+[5.730s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/share/fastdds_record_typesupport/environment/library_path.sh
+[5.730s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/share/fastdds_record_typesupport/environment/library_path.dsv
+[5.730s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/lib/libfastdds_record_typesupport__rosidl_generator_c.so
+[5.733s] -- Set runtime path of "/home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/lib/libfastdds_record_typesupport__rosidl_generator_c.so" to ""
+[5.733s] -- Up-to-date: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/include/fastdds_record_typesupport
+[5.733s] -- Up-to-date: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/include/fastdds_record_typesupport/msg
+[5.733s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/include/fastdds_record_typesupport/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[5.735s] -- Up-to-date: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/include/fastdds_record_typesupport/idl
+[5.736s] -- Up-to-date: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/include/fastdds_record_typesupport/idl/detail
+[5.736s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/include/fastdds_record_typesupport/idl/detail/hello__rosidl_typesupport_fastrtps_c.h
+[5.738s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/include/fastdds_record_typesupport/idl/detail/hello_world__rosidl_typesupport_fastrtps_c.h
+[5.738s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/lib/libfastdds_record_typesupport__rosidl_typesupport_fastrtps_c.so
+[5.739s] -- Set runtime path of "/home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/lib/libfastdds_record_typesupport__rosidl_typesupport_fastrtps_c.so" to ""
+[5.739s] -- Up-to-date: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/include/fastdds_record_typesupport
+[5.739s] -- Up-to-date: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/include/fastdds_record_typesupport/msg
+[5.739s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/include/fastdds_record_typesupport/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[5.739s] -- Up-to-date: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/include/fastdds_record_typesupport/idl
+[5.739s] -- Up-to-date: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/include/fastdds_record_typesupport/idl/detail
+[5.739s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/include/fastdds_record_typesupport/idl/detail/dds_fastrtps
+[5.739s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/include/fastdds_record_typesupport/idl/detail/hello_world__rosidl_typesupport_fastrtps_cpp.hpp
+[5.740s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/include/fastdds_record_typesupport/idl/detail/hello__rosidl_typesupport_fastrtps_cpp.hpp
+[5.740s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/lib/libfastdds_record_typesupport__rosidl_typesupport_fastrtps_cpp.so
+[5.745s] -- Set runtime path of "/home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/lib/libfastdds_record_typesupport__rosidl_typesupport_fastrtps_cpp.so" to ""
+[5.745s] -- Up-to-date: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/include/fastdds_record_typesupport
+[5.745s] -- Up-to-date: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/include/fastdds_record_typesupport/msg
+[5.745s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/include/fastdds_record_typesupport/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[5.745s] -- Up-to-date: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/include/fastdds_record_typesupport/idl
+[5.745s] -- Up-to-date: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/include/fastdds_record_typesupport/idl/detail
+[5.745s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/include/fastdds_record_typesupport/idl/detail/hello_world__rosidl_typesupport_introspection_c.h
+[5.745s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/include/fastdds_record_typesupport/idl/detail/hello_world__type_support.c
+[5.745s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/include/fastdds_record_typesupport/idl/detail/hello__type_support.c
+[5.746s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/include/fastdds_record_typesupport/idl/detail/hello__rosidl_typesupport_introspection_c.h
+[5.750s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/lib/libfastdds_record_typesupport__rosidl_typesupport_introspection_c.so
+[5.750s] -- Set runtime path of "/home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/lib/libfastdds_record_typesupport__rosidl_typesupport_introspection_c.so" to ""
+[5.751s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/lib/libfastdds_record_typesupport__rosidl_typesupport_c.so
+[5.751s] -- Set runtime path of "/home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/lib/libfastdds_record_typesupport__rosidl_typesupport_c.so" to ""
+[5.751s] -- Up-to-date: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/include/fastdds_record_typesupport
+[5.751s] -- Up-to-date: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/include/fastdds_record_typesupport/idl
+[5.752s] -- Up-to-date: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/include/fastdds_record_typesupport/idl/detail
+[5.752s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/include/fastdds_record_typesupport/idl/detail/hello__traits.hpp
+[5.753s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/include/fastdds_record_typesupport/idl/detail/hello_world__builder.hpp
+[5.753s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/include/fastdds_record_typesupport/idl/detail/hello_world__struct.hpp
+[5.753s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/include/fastdds_record_typesupport/idl/detail/hello__builder.hpp
+[5.753s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/include/fastdds_record_typesupport/idl/detail/hello__struct.hpp
+[5.753s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/include/fastdds_record_typesupport/idl/detail/hello_world__traits.hpp
+[5.754s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/include/fastdds_record_typesupport/idl/hello.hpp
+[5.754s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/include/fastdds_record_typesupport/idl/hello_world.hpp
+[5.754s] -- Up-to-date: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/include/fastdds_record_typesupport
+[5.754s] -- Up-to-date: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/include/fastdds_record_typesupport/idl
+[5.754s] -- Up-to-date: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/include/fastdds_record_typesupport/idl/detail
+[5.754s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/include/fastdds_record_typesupport/idl/detail/hello_world__rosidl_typesupport_introspection_cpp.hpp
+[5.754s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/include/fastdds_record_typesupport/idl/detail/hello__type_support.cpp
+[5.755s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/include/fastdds_record_typesupport/idl/detail/hello_world__type_support.cpp
+[5.755s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/include/fastdds_record_typesupport/idl/detail/hello__rosidl_typesupport_introspection_cpp.hpp
+[5.755s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/lib/libfastdds_record_typesupport__rosidl_typesupport_introspection_cpp.so
+[5.756s] -- Set runtime path of "/home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/lib/libfastdds_record_typesupport__rosidl_typesupport_introspection_cpp.so" to ""
+[5.757s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/lib/libfastdds_record_typesupport__rosidl_typesupport_cpp.so
+[5.759s] -- Set runtime path of "/home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/lib/libfastdds_record_typesupport__rosidl_typesupport_cpp.so" to ""
+[5.759s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/share/fastdds_record_typesupport/environment/pythonpath.sh
+[5.759s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/share/fastdds_record_typesupport/environment/pythonpath.dsv
+[5.760s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/lib/python3.8/site-packages/fastdds_record_typesupport/__init__.py
+[5.810s] Compiling '/home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/lib/python3.8/site-packages/fastdds_record_typesupport/__init__.py'...
+[5.813s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/lib/python3.8/site-packages/fastdds_record_typesupport/idl
+[5.813s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/lib/python3.8/site-packages/fastdds_record_typesupport/idl/_hello_world_s.c
+[5.813s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/lib/python3.8/site-packages/fastdds_record_typesupport/idl/_hello_world.py
+[5.814s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/lib/python3.8/site-packages/fastdds_record_typesupport/idl/__init__.py
+[5.814s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/lib/python3.8/site-packages/fastdds_record_typesupport/idl/_hello.py
+[5.814s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/lib/python3.8/site-packages/fastdds_record_typesupport/idl/_hello_s.c
+[5.815s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/lib/python3.8/site-packages/fastdds_record_typesupport/fastdds_record_typesupport_s__rosidl_typesupport_fastrtps_c.cpython-38-x86_64-linux-gnu.so
+[5.818s] -- Set runtime path of "/home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/lib/python3.8/site-packages/fastdds_record_typesupport/fastdds_record_typesupport_s__rosidl_typesupport_fastrtps_c.cpython-38-x86_64-linux-gnu.so" to ""
+[5.818s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/lib/python3.8/site-packages/fastdds_record_typesupport/fastdds_record_typesupport_s__rosidl_typesupport_introspection_c.cpython-38-x86_64-linux-gnu.so
+[5.821s] -- Set runtime path of "/home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/lib/python3.8/site-packages/fastdds_record_typesupport/fastdds_record_typesupport_s__rosidl_typesupport_introspection_c.cpython-38-x86_64-linux-gnu.so" to ""
+[5.821s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/lib/python3.8/site-packages/fastdds_record_typesupport/fastdds_record_typesupport_s__rosidl_typesupport_c.cpython-38-x86_64-linux-gnu.so
+[5.823s] -- Set runtime path of "/home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/lib/python3.8/site-packages/fastdds_record_typesupport/fastdds_record_typesupport_s__rosidl_typesupport_c.cpython-38-x86_64-linux-gnu.so" to ""
+[5.823s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/lib/libfastdds_record_typesupport__python.so
+[5.826s] -- Set runtime path of "/home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/lib/libfastdds_record_typesupport__python.so" to ""
+[5.826s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/share/fastdds_record_typesupport/idl/HelloWorld.idl
+[5.826s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/share/ament_index/resource_index/package_run_dependencies/fastdds_record_typesupport
+[5.827s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/share/ament_index/resource_index/parent_prefix_path/fastdds_record_typesupport
+[5.827s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/share/fastdds_record_typesupport/environment/ament_prefix_path.sh
+[5.828s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/share/fastdds_record_typesupport/environment/ament_prefix_path.dsv
+[5.828s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/share/fastdds_record_typesupport/environment/path.sh
+[5.829s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/share/fastdds_record_typesupport/environment/path.dsv
+[5.829s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/share/fastdds_record_typesupport/local_setup.bash
+[5.829s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/share/fastdds_record_typesupport/local_setup.sh
+[5.830s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/share/fastdds_record_typesupport/local_setup.zsh
+[5.830s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/share/fastdds_record_typesupport/local_setup.dsv
+[5.831s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/share/fastdds_record_typesupport/package.dsv
+[5.831s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/share/ament_index/resource_index/packages/fastdds_record_typesupport
+[5.832s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/share/fastdds_record_typesupport/cmake/fastdds_record_typesupport__rosidl_generator_cExport.cmake
+[5.832s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/share/fastdds_record_typesupport/cmake/fastdds_record_typesupport__rosidl_generator_cExport-noconfig.cmake
+[5.833s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/share/fastdds_record_typesupport/cmake/fastdds_record_typesupport__rosidl_typesupport_introspection_cExport.cmake
+[5.833s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/share/fastdds_record_typesupport/cmake/fastdds_record_typesupport__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[5.834s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/share/fastdds_record_typesupport/cmake/fastdds_record_typesupport__rosidl_typesupport_cExport.cmake
+[5.834s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/share/fastdds_record_typesupport/cmake/fastdds_record_typesupport__rosidl_typesupport_cExport-noconfig.cmake
+[5.835s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/share/fastdds_record_typesupport/cmake/fastdds_record_typesupport__rosidl_generator_cppExport.cmake
+[5.835s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/share/fastdds_record_typesupport/cmake/fastdds_record_typesupport__rosidl_typesupport_introspection_cppExport.cmake
+[5.835s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/share/fastdds_record_typesupport/cmake/fastdds_record_typesupport__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[5.836s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/share/fastdds_record_typesupport/cmake/fastdds_record_typesupport__rosidl_typesupport_cppExport.cmake
+[5.836s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/share/fastdds_record_typesupport/cmake/fastdds_record_typesupport__rosidl_typesupport_cppExport-noconfig.cmake
+[5.837s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/share/fastdds_record_typesupport/cmake/rosidl_cmake-extras.cmake
+[5.837s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/share/fastdds_record_typesupport/cmake/ament_cmake_export_dependencies-extras.cmake
+[5.838s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/share/fastdds_record_typesupport/cmake/ament_cmake_export_libraries-extras.cmake
+[5.838s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/share/fastdds_record_typesupport/cmake/ament_cmake_export_targets-extras.cmake
+[5.838s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/share/fastdds_record_typesupport/cmake/ament_cmake_export_include_directories-extras.cmake
+[5.839s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/share/fastdds_record_typesupport/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[5.839s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/share/fastdds_record_typesupport/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[5.840s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/share/fastdds_record_typesupport/cmake/fastdds_record_typesupportConfig.cmake
+[5.840s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/share/fastdds_record_typesupport/cmake/fastdds_record_typesupportConfig-version.cmake
+[5.841s] -- Installing: /home/qiliang/fastdds_examples/TypicalExample/ros2com/install/fastdds_record_typesupport/share/fastdds_record_typesupport/package.xml
+[5.850s] Invoked command in '/home/qiliang/fastdds_examples/TypicalExample/ros2com/build/fastdds_record_typesupport' returned '0': CMAKE_PREFIX_PATH=/home/qiliang/Fast-DDS/install/fastrtps:/home/qiliang/Fast-DDS/install/foonathan_memory_vendor:/home/qiliang/Fast-DDS/install/fastcdr:/opt/ros/galactic:/opt/ros/noetic /usr/bin/cmake --install /home/qiliang/fastdds_examples/TypicalExample/ros2com/build/fastdds_record_typesupport

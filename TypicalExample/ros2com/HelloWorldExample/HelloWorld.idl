@@ -1,0 +1,11 @@
+module fastdds_record_typesupport
+{
+    module idl
+    {
+        struct HelloWorld
+        {
+            unsigned long index;
+            string message;
+        };
+    };
+};

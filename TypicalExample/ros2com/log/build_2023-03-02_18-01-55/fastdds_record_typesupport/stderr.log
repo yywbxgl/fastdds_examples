@@ -1,0 +1,20 @@
+[01m[K/home/qiliang/fastdds_examples/TypicalExample/ros2com/build/fastdds_record_typesupport/rosidl_generator_py/fastdds_record_typesupport/_fastdds_record_typesupport_s.ep.rosidl_typesupport_c.c:27:10:[m[K [01;31m[Kfatal error: [m[Kfastdds_record_typesupport/idl/detail/hello_world__type_support.h: 没有那个文件或目录
+   27 | #include [01;31m[K"fastdds_record_typesupport/idl/detail/hello_world__type_support.h"[m[K
+      |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+compilation terminated.
+make[2]: *** [CMakeFiles/fastdds_record_typesupport__rosidl_typesupport_c__pyext.dir/build.make:63：CMakeFiles/fastdds_record_typesupport__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/fastdds_record_typesupport/_fastdds_record_typesupport_s.ep.rosidl_typesupport_c.c.o] 错误 1
+make[1]: *** [CMakeFiles/Makefile2:185：CMakeFiles/fastdds_record_typesupport__rosidl_typesupport_c__pyext.dir/all] 错误 2
+make[1]: *** 正在等待未完成的任务....
+[01m[K/home/qiliang/fastdds_examples/TypicalExample/ros2com/build/fastdds_record_typesupport/rosidl_generator_py/fastdds_record_typesupport/_fastdds_record_typesupport_s.ep.rosidl_typesupport_fastrtps_c.c:27:10:[m[K [01;31m[Kfatal error: [m[Kfastdds_record_typesupport/idl/detail/hello_world__type_support.h: 没有那个文件或目录
+   27 | #include [01;31m[K"fastdds_record_typesupport/idl/detail/hello_world__type_support.h"[m[K
+      |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+compilation terminated.
+make[2]: *** [CMakeFiles/fastdds_record_typesupport__rosidl_typesupport_fastrtps_c__pyext.dir/build.make:63：CMakeFiles/fastdds_record_typesupport__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/fastdds_record_typesupport/_fastdds_record_typesupport_s.ep.rosidl_typesupport_fastrtps_c.c.o] 错误 1
+make[1]: *** [CMakeFiles/Makefile2:127：CMakeFiles/fastdds_record_typesupport__rosidl_typesupport_fastrtps_c__pyext.dir/all] 错误 2
+[01m[K/home/qiliang/fastdds_examples/TypicalExample/ros2com/build/fastdds_record_typesupport/rosidl_generator_py/fastdds_record_typesupport/_fastdds_record_typesupport_s.ep.rosidl_typesupport_introspection_c.c:27:10:[m[K [01;31m[Kfatal error: [m[Kfastdds_record_typesupport/idl/detail/hello_world__type_support.h: 没有那个文件或目录
+   27 | #include [01;31m[K"fastdds_record_typesupport/idl/detail/hello_world__type_support.h"[m[K
+      |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+compilation terminated.
+make[2]: *** [CMakeFiles/fastdds_record_typesupport__rosidl_typesupport_introspection_c__pyext.dir/build.make:63：CMakeFiles/fastdds_record_typesupport__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/fastdds_record_typesupport/_fastdds_record_typesupport_s.ep.rosidl_typesupport_introspection_c.c.o] 错误 1
+make[1]: *** [CMakeFiles/Makefile2:496：CMakeFiles/fastdds_record_typesupport__rosidl_typesupport_introspection_c__pyext.dir/all] 错误 2
+make: *** [Makefile:141：all] 错误 2
