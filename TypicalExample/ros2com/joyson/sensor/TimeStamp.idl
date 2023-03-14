@@ -1,0 +1,15 @@
+
+module joyson{ module sensor{ 
+
+    struct TimeStamp
+    {
+        uint64              Second;         
+        uint64              Millisecond;
+        uint64              Nanoseconds;
+    };
+
+}; }; 
+
+
+
+
