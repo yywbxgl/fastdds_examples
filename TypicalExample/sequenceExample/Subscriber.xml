@@ -22,8 +22,8 @@
             <rtps>
                 <name>HelloSubNode</name>
                 <userTransports> 
-                    <!-- <transport_id>UDP_TEST_1</transport_id> -->
-                    <transport_id>SHM_TEST_1</transport_id>
+                    <transport_id>UDP_TEST_1</transport_id>
+                    <!-- <transport_id>SHM_TEST_1</transport_id> -->
                 </userTransports>
                 <useBuiltinTransports>false</useBuiltinTransports>
             </rtps>

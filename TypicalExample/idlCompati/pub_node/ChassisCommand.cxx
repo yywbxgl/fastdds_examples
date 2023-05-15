@@ -36,42 +36,34 @@ using namespace eprosima::fastcdr::exception;
 
 control_msgs::msg::ChassisCommand::ChassisCommand()
 {
-    // m_ads_function com.eprosima.idl.parser.typecode.PrimitiveTypeCode@32eebfca
+    // m_ads_function com.eprosima.idl.parser.typecode.PrimitiveTypeCode@cb0ed20
     m_ads_function = 0;
-    // m_steer_angle_cmd com.eprosima.idl.parser.typecode.PrimitiveTypeCode@4e718207
+    // m_steer_angle_cmd com.eprosima.idl.parser.typecode.PrimitiveTypeCode@8e24743
     m_steer_angle_cmd = 0.0;
-    // m_steer_wheel_torque_cmd com.eprosima.idl.parser.typecode.PrimitiveTypeCode@1d371b2d
+    // m_steer_wheel_torque_cmd com.eprosima.idl.parser.typecode.PrimitiveTypeCode@4e718207
     m_steer_wheel_torque_cmd = 0.0;
-    // m_steer_vibration_cmd com.eprosima.idl.parser.typecode.PrimitiveTypeCode@543c6f6d
+    // m_steer_vibration_cmd com.eprosima.idl.parser.typecode.PrimitiveTypeCode@1d371b2d
     m_steer_vibration_cmd = 0;
-    // m_long_acceleration_cmd com.eprosima.idl.parser.typecode.PrimitiveTypeCode@13eb8acf
+    // m_long_acceleration_cmd com.eprosima.idl.parser.typecode.PrimitiveTypeCode@543c6f6d
     m_long_acceleration_cmd = 0.0;
-    // m_long_accelerationjerk_max com.eprosima.idl.parser.typecode.PrimitiveTypeCode@51c8530f
+    // m_long_accelerationjerk_max com.eprosima.idl.parser.typecode.PrimitiveTypeCode@13eb8acf
     m_long_accelerationjerk_max = 0.0;
-    // m_long_accelerationjerk_min com.eprosima.idl.parser.typecode.PrimitiveTypeCode@7403c468
+    // m_long_accelerationjerk_min com.eprosima.idl.parser.typecode.PrimitiveTypeCode@51c8530f
     m_long_accelerationjerk_min = 0.0;
-    // m_gear_cmd com.eprosima.idl.parser.typecode.PrimitiveTypeCode@43738a82
+    // m_gear_cmd com.eprosima.idl.parser.typecode.PrimitiveTypeCode@7403c468
     m_gear_cmd = 0;
-    // m_aeb_acceleration_cmd com.eprosima.idl.parser.typecode.PrimitiveTypeCode@c81cdd1
-    m_aeb_acceleration_cmd = 0.0;
-    // m_aeb_acceleration_enable com.eprosima.idl.parser.typecode.PrimitiveTypeCode@1fc2b765
+    // m_aeb_acceleration_enable com.eprosima.idl.parser.typecode.PrimitiveTypeCode@43738a82
     m_aeb_acceleration_enable = false;
-    // m_brake_pedal_cmd com.eprosima.idl.parser.typecode.PrimitiveTypeCode@75881071
+    // m_brake_pedal_cmd com.eprosima.idl.parser.typecode.PrimitiveTypeCode@c81cdd1
     m_brake_pedal_cmd = 0;
-    // m_test_add0 com.eprosima.idl.parser.typecode.PrimitiveTypeCode@2a70a3d8
-    m_test_add0 = 0.0;
-    // m_brake_pedal_cmd_enable com.eprosima.idl.parser.typecode.PrimitiveTypeCode@289d1c02
+    // m_aeb_acceleration_cmd com.eprosima.idl.parser.typecode.PrimitiveTypeCode@1fc2b765
+    m_aeb_acceleration_cmd = 0.0;
+    // m_brake_pedal_cmd_enable com.eprosima.idl.parser.typecode.PrimitiveTypeCode@75881071
     m_brake_pedal_cmd_enable = false;
-    // m_accelration_pedal_cmd com.eprosima.idl.parser.typecode.PrimitiveTypeCode@22eeefeb
+    // m_accelration_pedal_cmd com.eprosima.idl.parser.typecode.PrimitiveTypeCode@2a70a3d8
     m_accelration_pedal_cmd = 0;
-    // m_accelration_pedal_cmd_enble com.eprosima.idl.parser.typecode.PrimitiveTypeCode@17d0685f
+    // m_accelration_pedal_cmd_enble com.eprosima.idl.parser.typecode.PrimitiveTypeCode@289d1c02
     m_accelration_pedal_cmd_enble = false;
-    // m_test_add1 com.eprosima.idl.parser.typecode.PrimitiveTypeCode@2de8284b
-    m_test_add1 = false;
-    // m_test_add2 com.eprosima.idl.parser.typecode.PrimitiveTypeCode@4fb64261
-    m_test_add2 = 0.0;
-    // m_test_add3 com.eprosima.idl.parser.typecode.PrimitiveTypeCode@42607a4f
-    m_test_add3 = 0;
 
 }
 
@@ -91,10 +83,6 @@ control_msgs::msg::ChassisCommand::~ChassisCommand()
 
 
 
-
-
-
-
 }
 
 control_msgs::msg::ChassisCommand::ChassisCommand(
@@ -108,16 +96,12 @@ control_msgs::msg::ChassisCommand::ChassisCommand(
     m_long_accelerationjerk_max = x.m_long_accelerationjerk_max;
     m_long_accelerationjerk_min = x.m_long_accelerationjerk_min;
     m_gear_cmd = x.m_gear_cmd;
-    m_aeb_acceleration_cmd = x.m_aeb_acceleration_cmd;
     m_aeb_acceleration_enable = x.m_aeb_acceleration_enable;
     m_brake_pedal_cmd = x.m_brake_pedal_cmd;
-    m_test_add0 = x.m_test_add0;
+    m_aeb_acceleration_cmd = x.m_aeb_acceleration_cmd;
     m_brake_pedal_cmd_enable = x.m_brake_pedal_cmd_enable;
     m_accelration_pedal_cmd = x.m_accelration_pedal_cmd;
     m_accelration_pedal_cmd_enble = x.m_accelration_pedal_cmd_enble;
-    m_test_add1 = x.m_test_add1;
-    m_test_add2 = x.m_test_add2;
-    m_test_add3 = x.m_test_add3;
 }
 
 control_msgs::msg::ChassisCommand::ChassisCommand(
@@ -131,16 +115,12 @@ control_msgs::msg::ChassisCommand::ChassisCommand(
     m_long_accelerationjerk_max = x.m_long_accelerationjerk_max;
     m_long_accelerationjerk_min = x.m_long_accelerationjerk_min;
     m_gear_cmd = x.m_gear_cmd;
-    m_aeb_acceleration_cmd = x.m_aeb_acceleration_cmd;
     m_aeb_acceleration_enable = x.m_aeb_acceleration_enable;
     m_brake_pedal_cmd = x.m_brake_pedal_cmd;
-    m_test_add0 = x.m_test_add0;
+    m_aeb_acceleration_cmd = x.m_aeb_acceleration_cmd;
     m_brake_pedal_cmd_enable = x.m_brake_pedal_cmd_enable;
     m_accelration_pedal_cmd = x.m_accelration_pedal_cmd;
     m_accelration_pedal_cmd_enble = x.m_accelration_pedal_cmd_enble;
-    m_test_add1 = x.m_test_add1;
-    m_test_add2 = x.m_test_add2;
-    m_test_add3 = x.m_test_add3;
 }
 
 control_msgs::msg::ChassisCommand& control_msgs::msg::ChassisCommand::operator =(
@@ -155,16 +135,12 @@ control_msgs::msg::ChassisCommand& control_msgs::msg::ChassisCommand::operator =
     m_long_accelerationjerk_max = x.m_long_accelerationjerk_max;
     m_long_accelerationjerk_min = x.m_long_accelerationjerk_min;
     m_gear_cmd = x.m_gear_cmd;
-    m_aeb_acceleration_cmd = x.m_aeb_acceleration_cmd;
     m_aeb_acceleration_enable = x.m_aeb_acceleration_enable;
     m_brake_pedal_cmd = x.m_brake_pedal_cmd;
-    m_test_add0 = x.m_test_add0;
+    m_aeb_acceleration_cmd = x.m_aeb_acceleration_cmd;
     m_brake_pedal_cmd_enable = x.m_brake_pedal_cmd_enable;
     m_accelration_pedal_cmd = x.m_accelration_pedal_cmd;
     m_accelration_pedal_cmd_enble = x.m_accelration_pedal_cmd_enble;
-    m_test_add1 = x.m_test_add1;
-    m_test_add2 = x.m_test_add2;
-    m_test_add3 = x.m_test_add3;
 
     return *this;
 }
@@ -181,16 +157,12 @@ control_msgs::msg::ChassisCommand& control_msgs::msg::ChassisCommand::operator =
     m_long_accelerationjerk_max = x.m_long_accelerationjerk_max;
     m_long_accelerationjerk_min = x.m_long_accelerationjerk_min;
     m_gear_cmd = x.m_gear_cmd;
-    m_aeb_acceleration_cmd = x.m_aeb_acceleration_cmd;
     m_aeb_acceleration_enable = x.m_aeb_acceleration_enable;
     m_brake_pedal_cmd = x.m_brake_pedal_cmd;
-    m_test_add0 = x.m_test_add0;
+    m_aeb_acceleration_cmd = x.m_aeb_acceleration_cmd;
     m_brake_pedal_cmd_enable = x.m_brake_pedal_cmd_enable;
     m_accelration_pedal_cmd = x.m_accelration_pedal_cmd;
     m_accelration_pedal_cmd_enble = x.m_accelration_pedal_cmd_enble;
-    m_test_add1 = x.m_test_add1;
-    m_test_add2 = x.m_test_add2;
-    m_test_add3 = x.m_test_add3;
 
     return *this;
 }
@@ -199,7 +171,7 @@ bool control_msgs::msg::ChassisCommand::operator ==(
         const ChassisCommand& x) const
 {
 
-    return (m_ads_function == x.m_ads_function && m_steer_angle_cmd == x.m_steer_angle_cmd && m_steer_wheel_torque_cmd == x.m_steer_wheel_torque_cmd && m_steer_vibration_cmd == x.m_steer_vibration_cmd && m_long_acceleration_cmd == x.m_long_acceleration_cmd && m_long_accelerationjerk_max == x.m_long_accelerationjerk_max && m_long_accelerationjerk_min == x.m_long_accelerationjerk_min && m_gear_cmd == x.m_gear_cmd && m_aeb_acceleration_cmd == x.m_aeb_acceleration_cmd && m_aeb_acceleration_enable == x.m_aeb_acceleration_enable && m_brake_pedal_cmd == x.m_brake_pedal_cmd && m_test_add0 == x.m_test_add0 && m_brake_pedal_cmd_enable == x.m_brake_pedal_cmd_enable && m_accelration_pedal_cmd == x.m_accelration_pedal_cmd && m_accelration_pedal_cmd_enble == x.m_accelration_pedal_cmd_enble && m_test_add1 == x.m_test_add1 && m_test_add2 == x.m_test_add2 && m_test_add3 == x.m_test_add3);
+    return (m_ads_function == x.m_ads_function && m_steer_angle_cmd == x.m_steer_angle_cmd && m_steer_wheel_torque_cmd == x.m_steer_wheel_torque_cmd && m_steer_vibration_cmd == x.m_steer_vibration_cmd && m_long_acceleration_cmd == x.m_long_acceleration_cmd && m_long_accelerationjerk_max == x.m_long_accelerationjerk_max && m_long_accelerationjerk_min == x.m_long_accelerationjerk_min && m_gear_cmd == x.m_gear_cmd && m_aeb_acceleration_enable == x.m_aeb_acceleration_enable && m_brake_pedal_cmd == x.m_brake_pedal_cmd && m_aeb_acceleration_cmd == x.m_aeb_acceleration_cmd && m_brake_pedal_cmd_enable == x.m_brake_pedal_cmd_enable && m_accelration_pedal_cmd == x.m_accelration_pedal_cmd && m_accelration_pedal_cmd_enble == x.m_accelration_pedal_cmd_enble);
 }
 
 bool control_msgs::msg::ChassisCommand::operator !=(
@@ -238,9 +210,6 @@ size_t control_msgs::msg::ChassisCommand::getMaxCdrSerializedSize(
     current_alignment += 1 + eprosima::fastcdr::Cdr::alignment(current_alignment, 1);
 
 
-    current_alignment += 4 + eprosima::fastcdr::Cdr::alignment(current_alignment, 4);
-
-
     current_alignment += 1 + eprosima::fastcdr::Cdr::alignment(current_alignment, 1);
 
 
@@ -257,15 +226,6 @@ size_t control_msgs::msg::ChassisCommand::getMaxCdrSerializedSize(
 
 
     current_alignment += 1 + eprosima::fastcdr::Cdr::alignment(current_alignment, 1);
-
-
-    current_alignment += 1 + eprosima::fastcdr::Cdr::alignment(current_alignment, 1);
-
-
-    current_alignment += 4 + eprosima::fastcdr::Cdr::alignment(current_alignment, 4);
-
-
-    current_alignment += 4 + eprosima::fastcdr::Cdr::alignment(current_alignment, 4);
 
 
 
@@ -304,9 +264,6 @@ size_t control_msgs::msg::ChassisCommand::getCdrSerializedSize(
     current_alignment += 1 + eprosima::fastcdr::Cdr::alignment(current_alignment, 1);
 
 
-    current_alignment += 4 + eprosima::fastcdr::Cdr::alignment(current_alignment, 4);
-
-
     current_alignment += 1 + eprosima::fastcdr::Cdr::alignment(current_alignment, 1);
 
 
@@ -323,15 +280,6 @@ size_t control_msgs::msg::ChassisCommand::getCdrSerializedSize(
 
 
     current_alignment += 1 + eprosima::fastcdr::Cdr::alignment(current_alignment, 1);
-
-
-    current_alignment += 1 + eprosima::fastcdr::Cdr::alignment(current_alignment, 1);
-
-
-    current_alignment += 4 + eprosima::fastcdr::Cdr::alignment(current_alignment, 4);
-
-
-    current_alignment += 4 + eprosima::fastcdr::Cdr::alignment(current_alignment, 4);
 
 
 
@@ -350,16 +298,12 @@ void control_msgs::msg::ChassisCommand::serialize(
     scdr << m_long_accelerationjerk_max;
     scdr << m_long_accelerationjerk_min;
     scdr << m_gear_cmd;
-    scdr << m_aeb_acceleration_cmd;
     scdr << m_aeb_acceleration_enable;
     scdr << m_brake_pedal_cmd;
-    scdr << m_test_add0;
+    scdr << m_aeb_acceleration_cmd;
     scdr << m_brake_pedal_cmd_enable;
     scdr << m_accelration_pedal_cmd;
     scdr << m_accelration_pedal_cmd_enble;
-    scdr << m_test_add1;
-    scdr << m_test_add2;
-    scdr << m_test_add3;
 
 }
 
@@ -375,16 +319,12 @@ void control_msgs::msg::ChassisCommand::deserialize(
     dcdr >> m_long_accelerationjerk_max;
     dcdr >> m_long_accelerationjerk_min;
     dcdr >> m_gear_cmd;
-    dcdr >> m_aeb_acceleration_cmd;
     dcdr >> m_aeb_acceleration_enable;
     dcdr >> m_brake_pedal_cmd;
-    dcdr >> m_test_add0;
+    dcdr >> m_aeb_acceleration_cmd;
     dcdr >> m_brake_pedal_cmd_enable;
     dcdr >> m_accelration_pedal_cmd;
     dcdr >> m_accelration_pedal_cmd_enble;
-    dcdr >> m_test_add1;
-    dcdr >> m_test_add2;
-    dcdr >> m_test_add3;
 }
 
 /*!
@@ -612,34 +552,6 @@ int8_t& control_msgs::msg::ChassisCommand::gear_cmd()
 }
 
 /*!
- * @brief This function sets a value in member aeb_acceleration_cmd
- * @param _aeb_acceleration_cmd New value for member aeb_acceleration_cmd
- */
-void control_msgs::msg::ChassisCommand::aeb_acceleration_cmd(
-        float _aeb_acceleration_cmd)
-{
-    m_aeb_acceleration_cmd = _aeb_acceleration_cmd;
-}
-
-/*!
- * @brief This function returns the value of member aeb_acceleration_cmd
- * @return Value of member aeb_acceleration_cmd
- */
-float control_msgs::msg::ChassisCommand::aeb_acceleration_cmd() const
-{
-    return m_aeb_acceleration_cmd;
-}
-
-/*!
- * @brief This function returns a reference to member aeb_acceleration_cmd
- * @return Reference to member aeb_acceleration_cmd
- */
-float& control_msgs::msg::ChassisCommand::aeb_acceleration_cmd()
-{
-    return m_aeb_acceleration_cmd;
-}
-
-/*!
  * @brief This function sets a value in member aeb_acceleration_enable
  * @param _aeb_acceleration_enable New value for member aeb_acceleration_enable
  */
@@ -696,31 +608,31 @@ uint8_t& control_msgs::msg::ChassisCommand::brake_pedal_cmd()
 }
 
 /*!
- * @brief This function sets a value in member test_add0
- * @param _test_add0 New value for member test_add0
+ * @brief This function sets a value in member aeb_acceleration_cmd
+ * @param _aeb_acceleration_cmd New value for member aeb_acceleration_cmd
  */
-void control_msgs::msg::ChassisCommand::test_add0(
-        float _test_add0)
+void control_msgs::msg::ChassisCommand::aeb_acceleration_cmd(
+        float _aeb_acceleration_cmd)
 {
-    m_test_add0 = _test_add0;
+    m_aeb_acceleration_cmd = _aeb_acceleration_cmd;
 }
 
 /*!
- * @brief This function returns the value of member test_add0
- * @return Value of member test_add0
+ * @brief This function returns the value of member aeb_acceleration_cmd
+ * @return Value of member aeb_acceleration_cmd
  */
-float control_msgs::msg::ChassisCommand::test_add0() const
+float control_msgs::msg::ChassisCommand::aeb_acceleration_cmd() const
 {
-    return m_test_add0;
+    return m_aeb_acceleration_cmd;
 }
 
 /*!
- * @brief This function returns a reference to member test_add0
- * @return Reference to member test_add0
+ * @brief This function returns a reference to member aeb_acceleration_cmd
+ * @return Reference to member aeb_acceleration_cmd
  */
-float& control_msgs::msg::ChassisCommand::test_add0()
+float& control_msgs::msg::ChassisCommand::aeb_acceleration_cmd()
 {
-    return m_test_add0;
+    return m_aeb_acceleration_cmd;
 }
 
 /*!
@@ -807,99 +719,11 @@ bool& control_msgs::msg::ChassisCommand::accelration_pedal_cmd_enble()
     return m_accelration_pedal_cmd_enble;
 }
 
-/*!
- * @brief This function sets a value in member test_add1
- * @param _test_add1 New value for member test_add1
- */
-void control_msgs::msg::ChassisCommand::test_add1(
-        bool _test_add1)
-{
-    m_test_add1 = _test_add1;
-}
-
-/*!
- * @brief This function returns the value of member test_add1
- * @return Value of member test_add1
- */
-bool control_msgs::msg::ChassisCommand::test_add1() const
-{
-    return m_test_add1;
-}
-
-/*!
- * @brief This function returns a reference to member test_add1
- * @return Reference to member test_add1
- */
-bool& control_msgs::msg::ChassisCommand::test_add1()
-{
-    return m_test_add1;
-}
-
-/*!
- * @brief This function sets a value in member test_add2
- * @param _test_add2 New value for member test_add2
- */
-void control_msgs::msg::ChassisCommand::test_add2(
-        float _test_add2)
-{
-    m_test_add2 = _test_add2;
-}
-
-/*!
- * @brief This function returns the value of member test_add2
- * @return Value of member test_add2
- */
-float control_msgs::msg::ChassisCommand::test_add2() const
-{
-    return m_test_add2;
-}
-
-/*!
- * @brief This function returns a reference to member test_add2
- * @return Reference to member test_add2
- */
-float& control_msgs::msg::ChassisCommand::test_add2()
-{
-    return m_test_add2;
-}
-
-/*!
- * @brief This function sets a value in member test_add3
- * @param _test_add3 New value for member test_add3
- */
-void control_msgs::msg::ChassisCommand::test_add3(
-        int32_t _test_add3)
-{
-    m_test_add3 = _test_add3;
-}
-
-/*!
- * @brief This function returns the value of member test_add3
- * @return Value of member test_add3
- */
-int32_t control_msgs::msg::ChassisCommand::test_add3() const
-{
-    return m_test_add3;
-}
-
-/*!
- * @brief This function returns a reference to member test_add3
- * @return Reference to member test_add3
- */
-int32_t& control_msgs::msg::ChassisCommand::test_add3()
-{
-    return m_test_add3;
-}
-
 
 size_t control_msgs::msg::ChassisCommand::getKeyMaxCdrSerializedSize(
         size_t current_alignment)
 {
     size_t current_align = current_alignment;
-
-
-
-
 
 
 
@@ -929,7 +753,7 @@ void control_msgs::msg::ChassisCommand::serializeKey(
         eprosima::fastcdr::Cdr& scdr) const
 {
     (void) scdr;
-                      
+                  
 }
 
 

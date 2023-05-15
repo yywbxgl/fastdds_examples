@@ -278,25 +278,6 @@ namespace control_msgs {
             eProsima_user_DllExport int8_t& gear_cmd();
 
             /*!
-             * @brief This function sets a value in member aeb_acceleration_cmd
-             * @param _aeb_acceleration_cmd New value for member aeb_acceleration_cmd
-             */
-            eProsima_user_DllExport void aeb_acceleration_cmd(
-                    float _aeb_acceleration_cmd);
-
-            /*!
-             * @brief This function returns the value of member aeb_acceleration_cmd
-             * @return Value of member aeb_acceleration_cmd
-             */
-            eProsima_user_DllExport float aeb_acceleration_cmd() const;
-
-            /*!
-             * @brief This function returns a reference to member aeb_acceleration_cmd
-             * @return Reference to member aeb_acceleration_cmd
-             */
-            eProsima_user_DllExport float& aeb_acceleration_cmd();
-
-            /*!
              * @brief This function sets a value in member aeb_acceleration_enable
              * @param _aeb_acceleration_enable New value for member aeb_acceleration_enable
              */
@@ -335,23 +316,23 @@ namespace control_msgs {
             eProsima_user_DllExport uint8_t& brake_pedal_cmd();
 
             /*!
-             * @brief This function sets a value in member test_add0
-             * @param _test_add0 New value for member test_add0
+             * @brief This function sets a value in member aeb_acceleration_cmd
+             * @param _aeb_acceleration_cmd New value for member aeb_acceleration_cmd
              */
-            eProsima_user_DllExport void test_add0(
-                    float _test_add0);
+            eProsima_user_DllExport void aeb_acceleration_cmd(
+                    float _aeb_acceleration_cmd);
 
             /*!
-             * @brief This function returns the value of member test_add0
-             * @return Value of member test_add0
+             * @brief This function returns the value of member aeb_acceleration_cmd
+             * @return Value of member aeb_acceleration_cmd
              */
-            eProsima_user_DllExport float test_add0() const;
+            eProsima_user_DllExport float aeb_acceleration_cmd() const;
 
             /*!
-             * @brief This function returns a reference to member test_add0
-             * @return Reference to member test_add0
+             * @brief This function returns a reference to member aeb_acceleration_cmd
+             * @return Reference to member aeb_acceleration_cmd
              */
-            eProsima_user_DllExport float& test_add0();
+            eProsima_user_DllExport float& aeb_acceleration_cmd();
 
             /*!
              * @brief This function sets a value in member brake_pedal_cmd_enable
@@ -409,63 +390,6 @@ namespace control_msgs {
              * @return Reference to member accelration_pedal_cmd_enble
              */
             eProsima_user_DllExport bool& accelration_pedal_cmd_enble();
-
-            /*!
-             * @brief This function sets a value in member test_add1
-             * @param _test_add1 New value for member test_add1
-             */
-            eProsima_user_DllExport void test_add1(
-                    bool _test_add1);
-
-            /*!
-             * @brief This function returns the value of member test_add1
-             * @return Value of member test_add1
-             */
-            eProsima_user_DllExport bool test_add1() const;
-
-            /*!
-             * @brief This function returns a reference to member test_add1
-             * @return Reference to member test_add1
-             */
-            eProsima_user_DllExport bool& test_add1();
-
-            /*!
-             * @brief This function sets a value in member test_add2
-             * @param _test_add2 New value for member test_add2
-             */
-            eProsima_user_DllExport void test_add2(
-                    float _test_add2);
-
-            /*!
-             * @brief This function returns the value of member test_add2
-             * @return Value of member test_add2
-             */
-            eProsima_user_DllExport float test_add2() const;
-
-            /*!
-             * @brief This function returns a reference to member test_add2
-             * @return Reference to member test_add2
-             */
-            eProsima_user_DllExport float& test_add2();
-
-            /*!
-             * @brief This function sets a value in member test_add3
-             * @param _test_add3 New value for member test_add3
-             */
-            eProsima_user_DllExport void test_add3(
-                    int32_t _test_add3);
-
-            /*!
-             * @brief This function returns the value of member test_add3
-             * @return Value of member test_add3
-             */
-            eProsima_user_DllExport int32_t test_add3() const;
-
-            /*!
-             * @brief This function returns a reference to member test_add3
-             * @return Reference to member test_add3
-             */
-            eProsima_user_DllExport int32_t& test_add3();
 
 
             /*!
@@ -535,16 +459,12 @@ namespace control_msgs {
             float m_long_accelerationjerk_max;
             float m_long_accelerationjerk_min;
             int8_t m_gear_cmd;
-            float m_aeb_acceleration_cmd;
             bool m_aeb_acceleration_enable;
             uint8_t m_brake_pedal_cmd;
-            float m_test_add0;
+            float m_aeb_acceleration_cmd;
             bool m_brake_pedal_cmd_enable;
             uint8_t m_accelration_pedal_cmd;
             bool m_accelration_pedal_cmd_enble;
-            bool m_test_add1;
-            float m_test_add2;
-            int32_t m_test_add3;
         };
     } // namespace msg
 } // namespace control_msgs

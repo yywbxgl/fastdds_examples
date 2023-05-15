@@ -19,25 +19,22 @@ module control_msgs {
             float long_accelerationjerk_min;
             //档位请求指令；取值：0-无请求；1-P；2-R；3-N；4-D；5-M；6-S；7-L；8~10:预留；11~20-D1~D10(即1档到10档(若有))；;
             int8 gear_cmd;
-            //AEB加速度请求指令；单位：m/s2；;
-            float aeb_acceleration_cmd;
+            // //AEB加速度请求指令；单位：m/s2；;
+            // float aeb_acceleration_cmd;
             //AEB加速度请求指令生效；取值：false-无效；true-生效；;
             boolean aeb_acceleration_enable;
             //刹车踏板开度指令；单位：1%；取值：1~100，表示刹车踏板踩下的深度的比例；;
             uint8 brake_pedal_cmd;
+
+            float aeb_acceleration_cmd;
+
+            
             //刹车踏板开度指令生效；取值：false-无效；true-生效；;
-
-            float   test_add0;
-
             boolean brake_pedal_cmd_enable;
             //油门踏板开度指令； 单位：1%；取值：1~100，表示油门踏板踩下的深度的比例；;
             uint8 accelration_pedal_cmd;
             //油门踏板开度指令生效；取值：false-无效；true-生效；;
             boolean accelration_pedal_cmd_enble;
-
-            boolean test_add1;
-            float   test_add2;
-            int32   test_add3;
 
         };
     };

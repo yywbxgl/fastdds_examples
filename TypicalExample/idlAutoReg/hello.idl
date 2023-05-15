@@ -1,0 +1,6 @@
+struct HelloMsg
+{
+    unsigned short sensor_id;
+    unsigned long index;
+    unsigned long temperature;
+};
